@@ -12,7 +12,7 @@ SECTIONS
 	.text : {
 		*(.vectors*)
 		*(.text*)
-		*(.rdata)
+		*(.rodata)
 		. = ALIGN(4);
 		_E_text = .;
 	}> flash
