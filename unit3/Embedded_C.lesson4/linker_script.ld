@@ -1,4 +1,4 @@
-/* linker script cortex-m3
+/* linker script cortex-m4
 Eng. Galal Nasser */
 
 MEMORY
