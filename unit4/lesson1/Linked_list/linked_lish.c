@@ -131,3 +131,97 @@ void delete_all()
 
 	gpFirstStudent = NULL;
 }
+
+void iterative_length()
+{
+	struct SStudent* pPosition = gpFirstStudent;
+	int count = 0;
+
+	if(gpFirstStudent == NULL)
+	{
+		DPRINTF("\nEmpty list");
+	}
+
+	else
+	{
+		while(pPosition)
+		{
+			count++;
+			pPosition = pPosition->PNextStudent;
+		}
+		DPRINTF("\n length = %d",count);
+	}
+}
+int recursive_length(struct SStudent* student)
+{
+	if(student)
+	{
+		return 1 + recursive_length(student->PNextStudent);
+	}
+	else
+	{
+		return 0;
+	}
+}
+
+void GetNth_data()
+{
+	struct SStudent* pStudent = gpFirstStudent;
+	char index[20];
+	int count=0;
+
+
+	if(gpFirstStudent == NULL)
+	{
+		DPRINTF("\n empty list");
+	}
+
+	else
+	{
+		DPRINTF("\n Enter the index : ");
+		gets(index);
+
+		while(pStudent)
+		{
+			if(atoi(index) == count)
+			{
+				DPRINTF("student id : %d\n",pStudent->student.ID);
+				DPRINTF("student name : %s\n",pStudent->student.name);
+				DPRINTF("student height : %.2f\n\n",pStudent->student.height);
+				break;
+			}
+			pStudent = pStudent->PNextStudent;
+			count++;
+		}
+		DPRINTF("\n Wrong index not in the list\n");
+	}
+}
+
+void Nth_End()
+{
+	struct SStudent* pEnd = gpFirstStudent;
+
+	if(gpFirstStudent == NULL)
+	{
+		DPRINTF("\n EMpty list\n");
+	}
+
+	else
+	{
+		int index;
+		DPRINTF("\nEnter the index");
+		scanf("%d",&index);
+
+		index = recursive_length(gpFirstStudent) - index;
+
+		while(index)
+		{
+			index--;
+			pEnd = pEnd->PNextStudent;
+		}
+
+		DPRINTF("\nID :%d", pEnd->student.ID);
+		DPRINTF("\nName :%s", pEnd->student.name);
+		DPRINTF("\nHeight :%f", pEnd->student.height);
+	}
+}

@@ -38,4 +38,9 @@ void fill_the_record(struct SStudent* newStudent);
 int delete_student();
 void view_students();
 void delete_all();
+void iterative_length();
+int recursive_length();
+void GetNth_data();
+void Nth_End();
+
 #endif /* LINKED_LIST_H_ */

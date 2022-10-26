@@ -9,6 +9,7 @@
 #include "linked_list.h"
 
 
+extern struct SStudent* gpFirstStudent;
 
 int main(void)
 {
@@ -22,6 +23,10 @@ int main(void)
 		DPRINTF("2:Delete Student\n");
 		DPRINTF("3:View All Student\n");
 		DPRINTF("4:Delete All Student\n");
+		DPRINTF("5:GetNth_data \n");
+		DPRINTF("6:Length_Iterative \n");
+		DPRINTF("7:Length_Recursive \n");
+		DPRINTF("8: Nth_End \n");
 		DPRINTF("Enter option number: \n");
 
 		gets(text);
@@ -40,6 +45,18 @@ int main(void)
 			break;
 		case 4:
 			delete_all();
+			break;
+		case 5:
+			GetNth_data();
+			break;
+		case 6:
+			iterative_length();
+			break;
+		case 7:
+			DPRINTF("length = %d ", recursive_length(gpFirstStudent));
+			break;
+		case 8:
+			Nth_End();
 			break;
 		default:
 			DPRINTF("\t wrong option\n");
