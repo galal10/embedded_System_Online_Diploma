@@ -6,6 +6,8 @@
 
 #define THERSHOLD   20
 
+extern void (*P_main_ptr)();
+
 extern int getPressureVal();
 void waiting();
 void High_pressure_detected();
