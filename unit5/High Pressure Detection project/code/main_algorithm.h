@@ -4,7 +4,7 @@
 #include "driver.h"
 #include "Alarm_monitor.h"
 
-#define THERSHOLD   20
+#define THERSHOLD   ((unsigned char)20)
 
 extern void (*P_main_ptr)();
 

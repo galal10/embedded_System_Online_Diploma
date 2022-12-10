@@ -12,4 +12,5 @@ void waiting()
 void High_pressure_detected()
 {
     Start_alarm();
+    P_main_ptr = waiting;
 }
