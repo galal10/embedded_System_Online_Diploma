@@ -5,7 +5,7 @@
 int main(void)
 {
     GPIO_INITIALIZATION();
-    alarmPtr = Stop_alarm;
+    Set_Alarm_actuator(ON);
     P_main_ptr = waiting;
     while (1)
     {
