@@ -12,7 +12,9 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdint.h>
-#include "platforn_types.h"
+
+typedef unsigned short 			uint16_t;
+typedef unsigned int 			uint32_t;
 
 typedef struct
 {
