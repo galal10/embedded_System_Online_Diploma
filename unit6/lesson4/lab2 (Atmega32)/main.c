@@ -32,17 +32,17 @@ void EXTI_init(void)
 	// If ISC2 is written to zero, a falling edge on INT2 activates the interrupt.
 	MCUCSR_REG &= ~(1<<6);
 
-    // Setting interrupt masks in GICR
+	// Setting interrupt masks in GICR
 	GICR_REG |= (1<<5) | (1<<6) | (1<<7);
 
-    // Global Interrupt Enable (SREG I-bit)
+	// Global Interrupt Enable (SREG I-bit)
 	SREG_REG |= (1<<7);
 }
 
 void GPIO_init(void)
 {
-    // Pins 5, 6, 7 as output for LEDS
-    DDRD_REG |= (1 << 5) | (1 << 6) | (1 << 7);
+	// Pins 5, 6, 7 as output for LEDS
+	DDRD_REG |= (1 << 5) | (1 << 6) | (1 << 7);
 }
 
 int main(void)
