@@ -58,6 +58,47 @@ void clock_init()
 
 void GPIOA_init()
 {
+	GPIOA_CRL = 0;
+	GPIOB_CRL = 0;
+
+	// A1 floating input mode
+
+	//	MODEy[1:0] 00: Input mode (reset state)
+	GPIOA_CRL &= ~(0b11 << 4);
+
+	// 01: Floating input (reset state)
+	GPIOA_CRL |= (0b01 << 6);
+
+	/* ################################### */
+
+	// B1 push pull output mode
+
+	// 01: Output mode, max speed 10 MHz
+	GPIOB_CRL |= (0b01 << 4);
+
+	// 00: General purpose output push-pull
+	GPIOB_CRL &= ~(0b11 << 6);
+
+	/* ################################### */
+
+	// A13 floating input mode
+
+	//	MODEy[1:0] 00: Input mode (reset state)
+	GPIOA_CRH &= ~(0b11 << 20);
+
+	// 01: Floating input (reset state)
+	GPIOA_CRH |= (0b01 << 22);
+
+	/* ################################### */
+
+	// B13 push pull output mode
+
+	// 01: Output mode, max speed 10 MHz
+	GPIOB_CRH |= (0b01 << 20);
+
+	// 00: General purpose output push-pull
+	GPIOB_CRH &= ~(0b11 << 22);
+
 }
 
 int main(void)
