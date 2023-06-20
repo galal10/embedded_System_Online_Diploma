@@ -115,4 +115,21 @@ int main(void)
 {
 	clock_init();
 	GPIOA_init();
+
+	while(1)
+	{
+		if ( ((GPIOA_IDR & (1 << 1)) >> 1) == 0 ) // single pressing
+		{
+			GPIOB_ODR ^= (1 << 1);
+
+			while ( ((GPIOA_IDR & (1 << 1)) >> 1) == 0 );
+		}
+
+		if( ( (GPIOA_IDR & (1 << 13)) >> 13) == 1 ) // multi pressing
+		{
+			GPIOB_ODR ^= (1 << 13);
+		}
+
+		my_delay(1);
+	}
 }
