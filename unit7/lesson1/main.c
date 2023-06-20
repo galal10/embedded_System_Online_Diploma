@@ -101,6 +101,16 @@ void GPIOA_init()
 
 }
 
+void my_delay(uint32_t time)
+{
+	uint32_t i,j;
+
+	for(int i = 0; i < time; i++)
+	{
+		for(int j = 0; j < 255; j++);
+	}
+}
+
 int main(void)
 {
 	clock_init();
