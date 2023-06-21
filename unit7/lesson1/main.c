@@ -105,9 +105,9 @@ void my_delay(uint32_t time)
 {
 	uint32_t i,j;
 
-	for(int i = 0; i < time; i++)
+	for(i = 0; i < time; i++)
 	{
-		for(int j = 0; j < 255; j++);
+		for(j = 0; j < 255; j++);
 	}
 }
 
