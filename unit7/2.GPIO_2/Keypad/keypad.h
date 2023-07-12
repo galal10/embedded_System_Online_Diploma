@@ -8,7 +8,7 @@
 #ifndef KEYPAD_KEYPAD_H_
 #define KEYPAD_KEYPAD_H_
 
-#include <avr/io.h>
+#include "../MemMap.h"
 
 #define KEYPAD_PORT			PORTC
 #define DATADir_KEYPAD_PORT	DDRC

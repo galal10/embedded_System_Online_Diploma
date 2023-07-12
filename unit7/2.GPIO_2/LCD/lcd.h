@@ -8,7 +8,7 @@
 #ifndef LCD_LCD_H_
 #define LCD_LCD_H_
 
-#include <avr/io.h>
+#include "../MemMap.h"
 #include <util/delay.h>
 
 #define LCD_PORT			PORTA
