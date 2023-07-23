@@ -13,42 +13,42 @@ int keypad_cols[] = {C0, C1, C2, C3};
 void keypad_init()
 {
 	pin.GPIO_PinNUmber = R0;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = R1;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = R2;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = R3;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = C0;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = C1;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = C2;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 	pin.GPIO_PinNUmber = C3;
-	pin.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
