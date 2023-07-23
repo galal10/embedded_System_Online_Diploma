@@ -10,7 +10,7 @@
 
 GPIO_PinConfig_t pin;
 
-void my_delay(uint32_t time)
+void delay(uint32_t time)
 {
 	uint32_t i,j;
 
@@ -151,7 +151,7 @@ void LCD_isBusy()
 void LCD_init()
 {
 	// wait for the hardware to initialize
-	my_delay(20);
+	delay(20);
 	LCD_isBusy();
 
 	// CTRL as input floating
@@ -212,7 +212,7 @@ void LCD_init()
 	MCAL_GPIO_init(LCD_PORT, &pin);
 	/* ################################### */
 
-	my_delay(15);
+	delay(15);
 	LCD_ClearScreen();
 
 	#ifdef EIGHT_BIT_MODE
