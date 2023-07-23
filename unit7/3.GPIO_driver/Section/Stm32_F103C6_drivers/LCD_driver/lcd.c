@@ -36,8 +36,11 @@ void LCD_Write_Command(uint8_t command)
 {
 	#ifdef EIGHT_BIT_MODE
 		LCD_isBusy();
-		LCD_PORT = command;
-		LCD_CTRL &=~(1<<RS_SWITCH | 1<<RW_SWITCH);
+
+		MCAL_GPIO_WritePort(LCD_PORT, command);
+		MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
+		MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+
 		LCD_KICK();
 	#endif
 }
