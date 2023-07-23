@@ -62,15 +62,19 @@ char keypad_getChar()
 
 	for(i = 0; i < 4; i++)
 	{
-		KEYPAD_PORT |= ( (1<<keypad_cols[0]) | (1<<keypad_cols[1]) | (1<<keypad_cols[2]) | (1<<keypad_cols[3]) );
+		MCAL_GPIO_WritePin(KEYPAD_PORT, keypad_cols[0], GPIO_PIN_SET);
+		MCAL_GPIO_WritePin(KEYPAD_PORT, keypad_cols[1], GPIO_PIN_SET);
+		MCAL_GPIO_WritePin(KEYPAD_PORT, keypad_cols[2], GPIO_PIN_SET);
+		MCAL_GPIO_WritePin(KEYPAD_PORT, keypad_cols[3], GPIO_PIN_SET);
+
 		// make one pin with 0
-		KEYPAD_PORT &=~(1 <<keypad_cols[i]);
+		MCAL_GPIO_WritePin(KEYPAD_PORT, keypad_cols[i], GPIO_PIN_RESET);
 
 		for(j = 0; j < 4; j++)
 		{
-			if( !(KEYPAD_PIN & (1<<keypad_rows[j])) )
+			if( (MCAL_GPIO_ReadPin(KEYPAD_PORT, keypad_rows[j]) ) == GPIO_PIN_RESET )
 			{
-				while( !(KEYPAD_PIN & (1<<keypad_rows[j])) );
+				while( (MCAL_GPIO_ReadPin(KEYPAD_PORT, keypad_rows[j]) ) == GPIO_PIN_RESET );
 				switch(i)
 				{
 					case(0):
