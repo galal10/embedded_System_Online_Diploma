@@ -20,11 +20,194 @@ void delay(uint32_t time)
 	}
 }
 
+static void LCD_GPIO_init()
+{
+	// CTRL as output
+	// Enable_SWITCH, RS_SWITCH, RW_SWITCH output push pull mode
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = Enable_SWITCH;
+	MCAL_GPIO_init(LCD_CTRL, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = RW_SWITCH;
+	MCAL_GPIO_init(LCD_CTRL, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = RS_SWITCH;
+	MCAL_GPIO_init(LCD_CTRL, &pin);
+	/* ################################### */
+
+	// data pins as output push pull with speed 10MHZ
+	// A1==>A7 push pull output mode
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_0;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_1;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_2;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_3;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_4;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_5;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_6;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_7;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+	/* ################################### */
+
+	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_RESET);
+	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+	MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
+}
+
+static void LCD_PORT_output()
+{
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_0;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_1;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_2;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_3;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_4;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_5;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_6;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
+	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
+	pin.GPIO_PinNUmber = GPIO_PIN_7;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+	/* ################################### */
+}
+
+static void LCD_PORT_input()
+{
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_0;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_1;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_2;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_3;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_4;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_5;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_6;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+
+	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
+	pin.GPIO_PinNUmber = GPIO_PIN_7;
+	MCAL_GPIO_init(LCD_PORT, &pin);
+	/* ################################### */
+}
+
 void LCD_KICK()
 {
-	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_RESET); // enable off
+	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_SET); // enable off
 	delay(50);
-	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_SET); // enable on
+	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_RESET); // enable on
+}
+
+void LCD_isBusy()
+{
+	// data pins as input floating
+	// A1==>A7
+	LCD_PORT_input();
+
+	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_SET); // read mode
+	MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET); // RS off
+
+	LCD_KICK();
+
+	// data pins as output push pull with speed 10MHZ
+	// A1==>A7 push pull output mode
+	LCD_PORT_output();
+
+	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET); // write mode
+}
+
+void LCD_init()
+{
+	// wait for the hardware to initialize
+	delay(20);
+	//LCD_isBusy();
+
+	LCD_GPIO_init();
+
+	delay(15);
+	LCD_ClearScreen();
+
+	LCD_Write_Command(LCD_FUNCTION_8BIT_2LINES);
+
+	LCD_Write_Command(LCD_DISP_ON_CURSOR_BLINK);
+	LCD_Write_Command(LCD_ENTRY_MODE);
 }
 
 void LCD_ClearScreen()
@@ -34,193 +217,26 @@ void LCD_ClearScreen()
 
 void LCD_Write_Command(uint8_t command)
 {
-	#ifdef EIGHT_BIT_MODE
-		LCD_isBusy();
+	LCD_isBusy();
 
-		MCAL_GPIO_WritePort(LCD_PORT, command);
-		MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
-		MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+	MCAL_GPIO_WritePort(LCD_PORT, command);
+	MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET);
+	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
 
-		LCD_KICK();
-	#endif
+	delay(1);
+	LCD_KICK();
 }
 
 void LCD_Write_Char(uint8_t data)
 {
-	#ifdef EIGHT_BIT_MODE
-		LCD_isBusy();
-
-		MCAL_GPIO_WritePort(LCD_PORT, data);
-		MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_SET);
-		MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
-
-		LCD_KICK();
-	#endif
-}
-
-void LCD_isBusy()
-{
-	#ifdef EIGHT_BIT_MODE
-		// data pins as input floating
-		// A1==>A7
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_0;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_1;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_2;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_3;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_4;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_5;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_6;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-
-		pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-		pin.GPIO_PinNUmber = GPIO_PIN_7;
-		MCAL_GPIO_init(LCD_PORT, &pin);
-		/* ################################### */
-	#endif
-
-	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_SET); // read mode
-	MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_RESET); // RS off
-
-	LCD_KICK();
-
-	// data pins as output push pull with speed 10MHZ
-	// A1==>A7 push pull output mode
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_0;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_1;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_2;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_3;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_4;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_5;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_6;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_7;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-	/* ################################### */
-
-	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET); // write mode
-}
-
-void LCD_init()
-{
-	// wait for the hardware to initialize
-	delay(20);
 	LCD_isBusy();
 
-	// CTRL as input floating
-	// Enable_SWITCH, RS_SWITCH, RW_SWITCH floating input mode
-	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-	pin.GPIO_PinNUmber = Enable_SWITCH;
-	MCAL_GPIO_init(LCD_CTRL, &pin);
+	MCAL_GPIO_WritePort(LCD_PORT, data);
+	MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_SET);
+	MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
 
-	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-	pin.GPIO_PinNUmber = RS_SWITCH;
-	MCAL_GPIO_init(LCD_CTRL, &pin);
-
-	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-	pin.GPIO_PinNUmber = RW_SWITCH;
-	MCAL_GPIO_init(LCD_CTRL, &pin);
-	/* ################################### */
-
-	// data pins as output push pull with speed 10MHZ
-	// A1==>A7 push pull output mode
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_0;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_1;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_2;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_3;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_4;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_5;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_6;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-
-	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
-	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_7;
-	MCAL_GPIO_init(LCD_PORT, &pin);
-	/* ################################### */
-
-	delay(15);
-	LCD_ClearScreen();
-
-	#ifdef EIGHT_BIT_MODE
-		LCD_Write_Command(LCD_FUNCTION_8BIT_2LINES);
-	#endif
-
-	LCD_Write_Command(LCD_DISP_ON_CURSOR_BLINK);
-	LCD_Write_Command(LCD_ENTRY_MODE);
+	delay(1);
+	LCD_KICK();
 }
 
 void LCD_goto_xy(int line, int position)
