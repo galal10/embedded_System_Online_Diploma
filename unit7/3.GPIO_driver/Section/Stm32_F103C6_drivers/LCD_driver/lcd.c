@@ -49,9 +49,11 @@ void LCD_Write_Char(uint8_t data)
 {
 	#ifdef EIGHT_BIT_MODE
 		LCD_isBusy();
-		LCD_PORT = data;
-		LCD_CTRL |= (1<<RS_SWITCH);
-		LCD_CTRL &=~(1<<RW_SWITCH);
+
+		MCAL_GPIO_WritePort(LCD_PORT, data);
+		MCAL_GPIO_WritePin(LCD_CTRL, RS_SWITCH, GPIO_PIN_SET);
+		MCAL_GPIO_WritePin(LCD_CTRL, RW_SWITCH, GPIO_PIN_RESET);
+
 		LCD_KICK();
 	#endif
 }
