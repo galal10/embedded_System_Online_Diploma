@@ -22,9 +22,9 @@ void delay(uint32_t time)
 
 void LCD_KICK()
 {
-	LCD_CTRL &=~(1<<Enable_SWITCH); // enable off
-	my_delay(50);
-	LCD_CTRL |= (1<<Enable_SWITCH); // enable on
+	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_RESET); // enable off
+	delay(50);
+	MCAL_GPIO_WritePin(LCD_CTRL, Enable_SWITCH, GPIO_PIN_SET); // enable on
 }
 
 void LCD_ClearScreen()
