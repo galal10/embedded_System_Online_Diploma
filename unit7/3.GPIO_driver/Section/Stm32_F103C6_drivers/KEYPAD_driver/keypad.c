@@ -53,7 +53,7 @@ void keypad_init()
 	MCAL_GPIO_init(KEYPAD_PORT, &pin);
 
 //	KEYPAD_PORT = 0xFF;
-	MCAL_GPIO_WritePort(KEYPAD_PORT, 0xFF);
+	MCAL_GPIO_WritePort(KEYPAD_PORT, (0x1FF | MCAL_GPIO_ReadPort(GPIOB)) );
 }
 
 char keypad_getChar()
