@@ -8,8 +8,6 @@
 
 #include "lcd.h"
 
-GPIO_PinConfig_t pin;
-
 void delay(uint32_t time)
 {
 	uint32_t i,j;

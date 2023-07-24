@@ -43,6 +43,7 @@
 #define LCD_CLEAR_SCREEN						(0x01)
 #define LCD_ENTRY_MODE							(0x06)
 
+GPIO_PinConfig_t pin;
 
 void LCD_init(void);
 void LCD_Write_Command(uint8_t command);
