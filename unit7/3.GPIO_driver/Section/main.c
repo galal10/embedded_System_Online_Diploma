@@ -104,8 +104,6 @@ int main(void)
 	// GPIO_init();
 	LCD_init();
 
-	keypad_init();
-
 	GPIO_7segment_init();
 
 	LCD_Write_String("Galal Nasser");
@@ -126,6 +124,8 @@ int main(void)
 	}
 	// turn off 7 seg
 	MCAL_GPIO_WritePort(GPIOB, 0xFF << 9);
+
+	keypad_init();
 
 	LCD_ClearScreen();
 	LCD_Write_String("Keypad is ready");
