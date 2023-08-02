@@ -31,11 +31,10 @@ static uint8_t IRQ_flag = 0;
 
 void clock_init()
 {
-	// Enable clock GPIOA
+	// Enable clock GPIOA, GBIOB, AFIO
 	RCC_GPIOA_CLK_EN();
-
-	// Enable clock GPIOB
 	RCC_GPIOB_CLK_EN();
+	RCC_AFIO_CLK_EN();
 }
 
 void my_delay(uint32_t time)
