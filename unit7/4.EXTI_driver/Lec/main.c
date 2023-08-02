@@ -64,5 +64,10 @@ int main(void)
 
 	while(1)
 	{
+		if( IRQ_flag )
+		{
+			LCD_ClearScreen();
+			IRQ_flag = 0;
+		}
 	}
 }
