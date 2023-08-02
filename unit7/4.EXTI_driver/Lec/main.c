@@ -27,6 +27,7 @@
 #include "lcd.h"
 #include "keypad.h"
 
+static uint8_t IRQ_flag = 0;
 
 void clock_init()
 {
