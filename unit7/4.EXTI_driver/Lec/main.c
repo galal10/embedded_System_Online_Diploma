@@ -47,6 +47,13 @@ void my_delay(uint32_t time)
 	}
 }
 
+void EXTI9_CallBack(void)
+{
+	IRQ_flag = 1;
+	LCD_Write_String("IRQ EXTI9 is happened _|-");
+	my_delay(1000);
+}
+
 int main(void)
 {
 	clock_init();
