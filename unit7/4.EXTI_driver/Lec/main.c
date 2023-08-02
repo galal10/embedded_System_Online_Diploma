@@ -49,6 +49,19 @@ void my_delay(uint32_t time)
 
 int main(void)
 {
+	clock_init();
+	LCD_init();
+	LCD_ClearScreen();
+
+	EXTI_PinConfig_t EXTI_CFG;
+	EXTI_CFG.EXTI_PIN = EXTI9PB9;
+	EXTI_CFG.trigger_case = EXTI_Trigger_RISING;
+	EXTI_CFG.P_IRQ_CallBack = EXTI9_CallBack;
+	EXTI_CFG.IRQ_EN = EXTI_IRQ_Enable;
+	MCAL_EXTI_GPIO_Init(&EXTI_CFG);
+
+	IRQ_flag = 1;
+
 	while(1)
 	{
 	}
