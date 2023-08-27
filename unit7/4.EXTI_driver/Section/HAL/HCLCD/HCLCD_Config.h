@@ -7,10 +7,10 @@
 #define E				PIN3
 
 /* Configure Control port ==> (MDIO_PORTA, MDIO_PORTB, MDIO_PORTC, MDIO_PORTD) */
-#define CONTROL_PORT	MDIO_PORTD
+#define CONTROL_PORT	MDIO_PORTB
 
 /* Configure Data port ==> (MDIO_PORTA, MDIO_PORTB, MDIO_PORTC, MDIO_PORTD) */
-#define DATA_PORT		MDIO_PORTD
+#define DATA_PORT		MDIO_PORTA
 
 /* Configure 4bit mode Data port pins ==> (PIN_LSB[PIN0, PIN1, PIN2, PIN3], PIN_MSB[PIN4, PIN5, PIN6, PIN7]) */
 #define MODE_4BIT_PINS	PIN_MSB
