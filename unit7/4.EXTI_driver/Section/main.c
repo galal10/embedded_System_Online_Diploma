@@ -10,6 +10,8 @@
 
 int main(void)
 {
+	HCLCD_Vid_4Bits_Init();
+	HCLCD_Vid_Write_String_4Bits((u8*)"Learn in Depth");
 	while(1)
 	{
 
