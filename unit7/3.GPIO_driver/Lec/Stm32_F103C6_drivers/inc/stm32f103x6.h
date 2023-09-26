@@ -55,10 +55,10 @@
 //A,B fully included in LQFP48 Package
 #define GPIOA_BASE								0x40010800UL
 #define GPIOB_BASE								0x40010C00UL
-//A,B partial included in LQFP48 Package
+//C,D partial included in LQFP48 Package
 #define GPIOC_BASE								0x40011000UL
 #define GPIOD_BASE								0x40011400UL
-//A,B not included in LQFP48 Package
+//E not included in LQFP48 Package
 #define GPIOE_BASE								0x40011800UL
 
 //EXTI
