@@ -226,7 +226,7 @@ uint8_t MCAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t PinNumber)
  * @Fn				- MCAL_GPIO_ReadPort
  * @brief 			- Read specific Port
  * @param [in] 		- GPIOx: where x can be (A..E depending on device used) to select the GPIO peripheral
- * @retval			- the input Port value (two values based on @ref GPIO_PIN_state)
+ * @retval			- the input Port value
  * Note				- none
  */
 uint16_t MCAL_GPIO_ReadPort(GPIO_TypeDef* GPIOx)
