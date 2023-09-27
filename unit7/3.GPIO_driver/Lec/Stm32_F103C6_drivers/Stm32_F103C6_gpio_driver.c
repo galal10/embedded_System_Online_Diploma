@@ -276,7 +276,7 @@ void MCAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t PinNumber, uint8_t value)
  * @Fn				- MCAL_GPIO_WritePort
  * @brief 			- Write specific Port
  * @param [in] 		- GPIOx: where x can be (A..E depending on device used) to select the GPIO peripheral
- * @param [in] 		- Value : Pin Value
+ * @param [in] 		- Value : Port Value
  * @retval			- none
  * Note				- none
  */
