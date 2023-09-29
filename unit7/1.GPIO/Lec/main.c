@@ -52,7 +52,7 @@ void clock_init()
 	// Enable clock GPIOA
 	RCC_APB2ENP |= (1<<RCC_IOPAEN);
 
-	// Enable clock GPIOA
+	// Enable clock GPIOB
 	RCC_APB2ENP |= (1<<RCC_IOPBEN);
 }
 
