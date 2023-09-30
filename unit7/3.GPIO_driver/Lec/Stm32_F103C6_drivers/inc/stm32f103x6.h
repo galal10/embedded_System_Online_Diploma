@@ -29,7 +29,7 @@
 #define PERIPHERALS_BASE						0x40000000UL
 
 
-#define Cortex_M3_Internal_Peripherals_BASE		0xE0000000UL
+#define Cortex_M3_Internal_Peripherals_BASE			0xE0000000UL
 
 //======================================================================================================
 
