@@ -154,16 +154,25 @@ typedef struct
 //======================================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*
-//clock enable Macros
+//clock enable && disable Macros
 //-*-*-*-*-*-*-*-*-*-*
 
-#define RCC_GPIOA_CLK_EN()		(RCC->APB2ENR |= 1<<2)
-#define RCC_GPIOB_CLK_EN()		(RCC->APB2ENR |= 1<<3)
-#define RCC_GPIOC_CLK_EN()		(RCC->APB2ENR |= 1<<4)
-#define RCC_GPIOD_CLK_EN()		(RCC->APB2ENR |= 1<<5)
-#define RCC_GPIOE_CLK_EN()		(RCC->APB2ENR |= 1<<6)
+#define RCC_GPIOA_CLK_EN()			(RCC->APB2ENR |= 1<<2)
+#define RCC_GPIOB_CLK_EN()			(RCC->APB2ENR |= 1<<3)
+#define RCC_GPIOC_CLK_EN()			(RCC->APB2ENR |= 1<<4)
+#define RCC_GPIOD_CLK_EN()			(RCC->APB2ENR |= 1<<5)
+#define RCC_GPIOE_CLK_EN()			(RCC->APB2ENR |= 1<<6)
 
-#define RCC_AFIO_CLK_EN()		(RCC->APB2ENR |= 1<<0)
+#define RCC_AFIO_CLK_EN()			(RCC->APB2ENR |= 1<<0)
+
+
+#define RCC_GPIOA_CLK_DIS()			(RCC->APB2ENR &= ~(1<<2))
+#define RCC_GPIOB_CLK_DIS()			(RCC->APB2ENR &= ~(1<<3))
+#define RCC_GPIOC_CLK_DIS()			(RCC->APB2ENR &= ~(1<<4))
+#define RCC_GPIOD_CLK_DIS()			(RCC->APB2ENR &= ~(1<<5))
+#define RCC_GPIOE_CLK_DIS()			(RCC->APB2ENR &= ~(1<<6))
+
+#define RCC_AFIO_CLK_DIS()			(RCC->APB2ENR &= ~(1<<0))
 
 //======================================================================================================
 
