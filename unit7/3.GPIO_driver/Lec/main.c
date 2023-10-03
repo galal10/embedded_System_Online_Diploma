@@ -67,13 +67,6 @@ void GPIO_init()
 	MCAL_GPIO_init(GPIOB, &pin);
 }
 
-void GPIO_Deinit()
-{
-	MCAL_GPIO_DeInit(GPIOA);
-	MCAL_GPIO_DeInit(GPIOB);
-}
-
-
 void my_delay(uint32_t time)
 {
 	uint32_t i,j;
