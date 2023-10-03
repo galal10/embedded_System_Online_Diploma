@@ -168,32 +168,32 @@ void MCAL_GPIO_DeInit(GPIO_TypeDef* GPIOx)
 	// 2nd Port bit reset register (GPIOx_BRR)
 	if( GPIOx == GPIOA )
 	{
-		RCC_GPIOA_CLK_EN(); // Bit 2 IOPARST: I/O port A reset
-		RCC_GPIOA_CLK_RESET();
+		RCC_GPIOA_CLK_RESET(); 	// Bit 2 IOPARST: I/O port A reset
+		RCC_GPIOA_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOB )
 	{
-		RCC_GPIOB_CLK_EN(); // Bit 3 IOPBRST: I/O port B reset
-		RCC_GPIOB_CLK_RESET();
+		RCC_GPIOB_CLK_RESET(); 	// Bit 3 IOPBRST: I/O port B reset
+		RCC_GPIOB_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOC )
 	{
-		RCC_GPIOC_CLK_EN(); // Bit 4 IOPCRST: I/O port C reset
-		RCC_GPIOC_CLK_RESET();
+		RCC_GPIOC_CLK_RESET(); 	// Bit 4 IOPCRST: I/O port C reset
+		RCC_GPIOC_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOD )
 	{
-		RCC_GPIOD_CLK_EN(); // Bit 5 IOPDRST: I/O port D reset
-		RCC_GPIOD_CLK_RESET();
+		RCC_GPIOD_CLK_RESET(); 	// Bit 5 IOPDRST: I/O port D reset
+		RCC_GPIOD_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOE )
 	{
-		RCC_GPIOE_CLK_EN(); // Bit 6 IOPERST: I/O port E reset
-		RCC_GPIOE_CLK_RESET();
+		RCC_GPIOE_CLK_RESET(); 	// Bit 6 IOPERST: I/O port E reset
+		RCC_GPIOE_CLK_DERESET();
 	}
 }
 
