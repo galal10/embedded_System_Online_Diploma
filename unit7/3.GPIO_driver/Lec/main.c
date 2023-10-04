@@ -38,7 +38,7 @@ void GPIO_init()
 
 	// A1 floating input mode
 	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-	pin.GPIO_PinNUmber = GPIO_PIN_1;
+	pin.GPIO_PinNumber = GPIO_PIN_1;
 
 	MCAL_GPIO_init(GPIOA, &pin);
 	/* ################################### */
@@ -46,14 +46,14 @@ void GPIO_init()
 	// B1 push pull output mode
 	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_1;
+	pin.GPIO_PinNumber = GPIO_PIN_1;
 
 	MCAL_GPIO_init(GPIOB, &pin);
 	/* ################################### */
 
 	// A13 floating input mode
 	pin.GPIO_mode = GPIO_INPUT_FLO_MODE;
-	pin.GPIO_PinNUmber = GPIO_PIN_13;
+	pin.GPIO_PinNumber = GPIO_PIN_13;
 
 	MCAL_GPIO_init(GPIOA, &pin);
 	/* ################################### */
@@ -61,9 +61,11 @@ void GPIO_init()
 	// B13 push pull output mode
 	pin.GPIO_mode = GPIO_OUTPUT_PP_MODE;
 	pin.GPIO_OutputSpeed = GPIO_SPEED_10M;
-	pin.GPIO_PinNUmber = GPIO_PIN_13;
+	pin.GPIO_PinNumber = GPIO_PIN_13;
 
 	MCAL_GPIO_init(GPIOB, &pin);
+	/* ################################### */
+
 }
 
 void my_delay(uint32_t time)
