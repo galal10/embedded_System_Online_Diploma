@@ -183,16 +183,25 @@ typedef struct
 //======================================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*
-//clock Reset Macros
+//clock Reset && DeReset Macros
 //-*-*-*-*-*-*-*-*-*-*
 
-#define RCC_GPIOA_CLK_RESET()		(RCC->APB2ENR &= ~(1<<2))
-#define RCC_GPIOB_CLK_RESET()		(RCC->APB2ENR &= ~(1<<3))
-#define RCC_GPIOC_CLK_RESET()		(RCC->APB2ENR &= ~(1<<4))
-#define RCC_GPIOD_CLK_RESET()		(RCC->APB2ENR &= ~(1<<5))
-#define RCC_GPIOE_CLK_RESET()		(RCC->APB2ENR &= ~(1<<6))
+#define RCC_GPIOA_CLK_RESET()			(RCC->APB2RSTR |= 1<<2)
+#define RCC_GPIOB_CLK_RESET()			(RCC->APB2RSTR |= 1<<3)
+#define RCC_GPIOC_CLK_RESET()			(RCC->APB2RSTR |= 1<<4)
+#define RCC_GPIOD_CLK_RESET()			(RCC->APB2RSTR |= 1<<5)
+#define RCC_GPIOE_CLK_RESET()			(RCC->APB2RSTR |= 1<<6)
 
-#define RCC_AFIO_CLK_RESET()		(RCC->APB2ENR &= ~(1<<0))
+#define RCC_AFIO_CLK_RESET()			(RCC->APB2RSTR |= 1<<0)
+
+
+#define RCC_GPIOA_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<2))
+#define RCC_GPIOB_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<3))
+#define RCC_GPIOC_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<4))
+#define RCC_GPIOD_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<5))
+#define RCC_GPIOE_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<6))
+
+#define RCC_AFIO_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<0))
 
 //======================================================================================================
 
