@@ -98,10 +98,10 @@ void MCAL_GPIO_init(GPIO_TypeDef* GPIOx, GPIO_PinConfig_t* PinConfig)
 	volatile uint32_t* configRegister = NULL;
 	uint8_t PINConfig;
 
-	configRegister = (PinConfig->GPIO_PinNUmber > GPIO_PIN_7)? &GPIOx->CRH : &GPIOx->CRL;
+	configRegister = (PinConfig->GPIO_PinNumber > GPIO_PIN_7)? &GPIOx->CRH : &GPIOx->CRL;
 
 	//	clear CNFy[1:0] MODEy[1:0]
-	(*configRegister) &=~ (0xF << get_CRLH_Position(PinConfig->GPIO_PinNUmber) );
+	(*configRegister) &=~ (0xF << get_CRLH_Position(PinConfig->GPIO_PinNumber) );
 
 
 	// if pin is output
@@ -131,17 +131,17 @@ void MCAL_GPIO_init(GPIO_TypeDef* GPIOx, GPIO_PinConfig_t* PinConfig)
 			PINConfig = ( (GPIO_INPUT_PU_MODE <<2 ) & 0x0f );
 			if( PinConfig->GPIO_mode == GPIO_INPUT_PU_MODE )
 			{
-				GPIOx->ODR |= PinConfig->GPIO_PinNUmber;
+				GPIOx->ODR |= PinConfig->GPIO_PinNumber;
 			}
 			else
 			{
-				GPIOx->ODR &= ~(PinConfig->GPIO_PinNUmber);
+				GPIOx->ODR &= ~(PinConfig->GPIO_PinNumber);
 			}
 		}
 
 	}
 	// write on CRL or CRH
-	(*configRegister) |= ( (PINConfig) <<get_CRLH_Position(PinConfig->GPIO_PinNUmber) );
+	(*configRegister) |= ( (PINConfig) <<get_CRLH_Position(PinConfig->GPIO_PinNumber) );
 
 }
 
