@@ -37,23 +37,23 @@ static void Enable_NVIC(uint8_t IRQ)
 	switch(IRQ)
 	{
 	case EXTI0:
-		NVIC_IRQ6_EXTI0_Enable;
+		NVIC_IRQ6_EXTI0_Enable();
 		break;
 
 	case EXTI1:
-		NVIC_IRQ7_EXTI1_Enable;
+		NVIC_IRQ7_EXTI1_Enable();
 		break;
 
 	case EXTI2:
-		NVIC_IRQ8_EXTI2_Enable;
+		NVIC_IRQ8_EXTI2_Enable();
 		break;
 
 	case EXTI3:
-		NVIC_IRQ9_EXTI3_Enable;
+		NVIC_IRQ9_EXTI3_Enable();
 		break;
 
 	case EXTI4:
-		NVIC_IRQ10_EXTI4_Enable;
+		NVIC_IRQ10_EXTI4_Enable();
 		break;
 
 	case EXTI5:
@@ -61,7 +61,7 @@ static void Enable_NVIC(uint8_t IRQ)
 	case EXTI7:
 	case EXTI8:
 	case EXTI9:
-		NVIC_IRQ23_EXTI5_9_Enable;
+		NVIC_IRQ23_EXTI5_9_Enable();
 		break;
 
 	case EXTI10:
@@ -70,7 +70,7 @@ static void Enable_NVIC(uint8_t IRQ)
 	case EXTI13:
 	case EXTI14:
 	case EXTI15:
-		NVIC_IRQ40_EXTI10_15_Enable;
+		NVIC_IRQ40_EXTI10_15_Enable();
 		break;
 	}
 }
@@ -80,23 +80,23 @@ static void Disable_NVIC(uint8_t IRQ)
 	switch(IRQ)
 	{
 	case EXTI0:
-		NVIC_IRQ6_EXTI0_Disable;
+		NVIC_IRQ6_EXTI0_Disable();
 		break;
 
 	case EXTI1:
-		NVIC_IRQ7_EXTI1_Disable;
+		NVIC_IRQ7_EXTI1_Disable();
 		break;
 
 	case EXTI2:
-		NVIC_IRQ8_EXTI2_Disable;
+		NVIC_IRQ8_EXTI2_Disable();
 		break;
 
 	case EXTI3:
-		NVIC_IRQ9_EXTI3_Disable;
+		NVIC_IRQ9_EXTI3_Disable();
 		break;
 
 	case EXTI4:
-		NVIC_IRQ10_EXTI4_Disable;
+		NVIC_IRQ10_EXTI4_Disable();
 		break;
 
 	case EXTI5:
@@ -104,7 +104,7 @@ static void Disable_NVIC(uint8_t IRQ)
 	case EXTI7:
 	case EXTI8:
 	case EXTI9:
-		NVIC_IRQ23_EXTI5_9_Disable;
+		NVIC_IRQ23_EXTI5_9_Disable();
 		break;
 
 	case EXTI10:
@@ -113,7 +113,7 @@ static void Disable_NVIC(uint8_t IRQ)
 	case EXTI13:
 	case EXTI14:
 	case EXTI15:
-		NVIC_IRQ40_EXTI10_15_Disable;
+		NVIC_IRQ40_EXTI10_15_Disable();
 		break;
 	}
 }
@@ -123,7 +123,7 @@ static void Update_EXTI(EXTI_PinConfig_t* EXTI_Config)
 	// 1- Configure GPIO to be AF input -> Floating input
 	GPIO_PinConfig_t PinConfig;
 	PinConfig.GPIO_mode = GPIO_INPUT_FLO_MODE;
-	PinConfig.GPIO_PinNUmber = EXTI_Config->EXTI_PIN.GPIO_PIN;
+	PinConfig.GPIO_PinNumber = EXTI_Config->EXTI_PIN.GPIO_PIN;
 	MCAL_GPIO_init(EXTI_Config->EXTI_PIN.GPIO_Port, &PinConfig);
 	//===============================================================
 
@@ -210,13 +210,13 @@ void MCAL_EXTI_GPIO_Deinit(void)
 	EXTI->PR    = 0xFFFFFFFF;
 
 	// Disable EXTI IRQ from NVIC
-	NVIC_IRQ6_EXTI0_Disable;
-	NVIC_IRQ7_EXTI1_Disable;
-	NVIC_IRQ8_EXTI2_Disable;
-	NVIC_IRQ9_EXTI3_Disable;
-	NVIC_IRQ10_EXTI4_Disable;
-	NVIC_IRQ23_EXTI5_9_Disable;
-	NVIC_IRQ40_EXTI10_15_Disable;
+	NVIC_IRQ6_EXTI0_Disable();
+	NVIC_IRQ7_EXTI1_Disable();
+	NVIC_IRQ8_EXTI2_Disable();
+	NVIC_IRQ9_EXTI3_Disable();
+	NVIC_IRQ10_EXTI4_Disable();
+	NVIC_IRQ23_EXTI5_9_Disable();
+	NVIC_IRQ40_EXTI10_15_Disable();
 }
 
 /*=====================================================================
