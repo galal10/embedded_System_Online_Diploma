@@ -98,10 +98,10 @@ void MCAL_GPIO_init(GPIO_TypeDef* GPIOx, GPIO_PinConfig_t* PinConfig)
 	volatile uint32_t* configRegister = NULL;
 	uint8_t PINConfig;
 
-	configRegister = (PinConfig->GPIO_PinNUmber > GPIO_PIN_7)? &GPIOx->CRH : &GPIOx->CRL;
+	configRegister = (PinConfig->GPIO_PinNumber > GPIO_PIN_7)? &GPIOx->CRH : &GPIOx->CRL;
 
 	//	clear CNFy[1:0] MODEy[1:0]
-	(*configRegister) &=~ (0xF << get_CRLH_Position(PinConfig->GPIO_PinNUmber) );
+	(*configRegister) &=~ (0xF << get_CRLH_Position(PinConfig->GPIO_PinNumber) );
 
 
 	// if pin is output
@@ -131,17 +131,17 @@ void MCAL_GPIO_init(GPIO_TypeDef* GPIOx, GPIO_PinConfig_t* PinConfig)
 			PINConfig = ( (GPIO_INPUT_PU_MODE <<2 ) & 0x0f );
 			if( PinConfig->GPIO_mode == GPIO_INPUT_PU_MODE )
 			{
-				GPIOx->ODR |= PinConfig->GPIO_PinNUmber;
+				GPIOx->ODR |= PinConfig->GPIO_PinNumber;
 			}
 			else
 			{
-				GPIOx->ODR &= ~(PinConfig->GPIO_PinNUmber);
+				GPIOx->ODR &= ~(PinConfig->GPIO_PinNumber);
 			}
 		}
 
 	}
 	// write on CRL or CRH
-	(*configRegister) |= ( (PINConfig) <<get_CRLH_Position(PinConfig->GPIO_PinNUmber) );
+	(*configRegister) |= ( (PINConfig) <<get_CRLH_Position(PinConfig->GPIO_PinNumber) );
 
 }
 
@@ -168,32 +168,32 @@ void MCAL_GPIO_DeInit(GPIO_TypeDef* GPIOx)
 	// 2nd Port bit reset register (GPIOx_BRR)
 	if( GPIOx == GPIOA )
 	{
-		RCC_GPIOA_CLK_EN(); // Bit 2 IOPARST: I/O port A reset
-		RCC_GPIOA_CLK_RESET();
+		RCC_GPIOA_CLK_RESET(); 	// Bit 2 IOPARST: I/O port A reset
+		RCC_GPIOA_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOB )
 	{
-		RCC_GPIOB_CLK_EN(); // Bit 3 IOPBRST: I/O port B reset
-		RCC_GPIOB_CLK_RESET();
+		RCC_GPIOB_CLK_RESET(); 	// Bit 3 IOPBRST: I/O port B reset
+		RCC_GPIOB_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOC )
 	{
-		RCC_GPIOC_CLK_EN(); // Bit 4 IOPCRST: I/O port C reset
-		RCC_GPIOC_CLK_RESET();
+		RCC_GPIOC_CLK_RESET(); 	// Bit 4 IOPCRST: I/O port C reset
+		RCC_GPIOC_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOD )
 	{
-		RCC_GPIOD_CLK_EN(); // Bit 5 IOPDRST: I/O port D reset
-		RCC_GPIOD_CLK_RESET();
+		RCC_GPIOD_CLK_RESET(); 	// Bit 5 IOPDRST: I/O port D reset
+		RCC_GPIOD_CLK_DERESET();
 	}
 
 	else if( GPIOx == GPIOE )
 	{
-		RCC_GPIOE_CLK_EN(); // Bit 6 IOPERST: I/O port E reset
-		RCC_GPIOE_CLK_RESET();
+		RCC_GPIOE_CLK_RESET(); 	// Bit 6 IOPERST: I/O port E reset
+		RCC_GPIOE_CLK_DERESET();
 	}
 }
 
@@ -226,7 +226,7 @@ uint8_t MCAL_GPIO_ReadPin(GPIO_TypeDef* GPIOx, uint16_t PinNumber)
  * @Fn				- MCAL_GPIO_ReadPort
  * @brief 			- Read specific Port
  * @param [in] 		- GPIOx: where x can be (A..E depending on device used) to select the GPIO peripheral
- * @retval			- the input Port value (two values based on @ref GPIO_PIN_state)
+ * @retval			- the input Port value
  * Note				- none
  */
 uint16_t MCAL_GPIO_ReadPort(GPIO_TypeDef* GPIOx)
@@ -276,7 +276,7 @@ void MCAL_GPIO_WritePin(GPIO_TypeDef* GPIOx, uint16_t PinNumber, uint8_t value)
  * @Fn				- MCAL_GPIO_WritePort
  * @brief 			- Write specific Port
  * @param [in] 		- GPIOx: where x can be (A..E depending on device used) to select the GPIO peripheral
- * @param [in] 		- Value : Pin Value
+ * @param [in] 		- Value : Port Value
  * @retval			- none
  * Note				- none
  */
