@@ -55,10 +55,10 @@
 //A,B fully included in LQFP48 Package
 #define GPIOA_BASE								0x40010800UL
 #define GPIOB_BASE								0x40010C00UL
-//A,B partial included in LQFP48 Package
+//C,D partial included in LQFP48 Package
 #define GPIOC_BASE								0x40011000UL
 #define GPIOD_BASE								0x40011400UL
-//A,B not included in LQFP48 Package
+//E not included in LQFP48 Package
 #define GPIOE_BASE								0x40011800UL
 
 //EXTI
@@ -154,31 +154,48 @@ typedef struct
 //======================================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*
-//clock enable Macros
+//clock enable && disable Macros
 //-*-*-*-*-*-*-*-*-*-*
 
-#define RCC_GPIOA_CLK_EN()		(RCC->APB2ENR |= 1<<2)
-#define RCC_GPIOB_CLK_EN()		(RCC->APB2ENR |= 1<<3)
-#define RCC_GPIOC_CLK_EN()		(RCC->APB2ENR |= 1<<4)
-#define RCC_GPIOD_CLK_EN()		(RCC->APB2ENR |= 1<<5)
-#define RCC_GPIOE_CLK_EN()		(RCC->APB2ENR |= 1<<6)
+#define RCC_GPIOA_CLK_EN()			(RCC->APB2ENR |= 1<<2)
+#define RCC_GPIOB_CLK_EN()			(RCC->APB2ENR |= 1<<3)
+#define RCC_GPIOC_CLK_EN()			(RCC->APB2ENR |= 1<<4)
+#define RCC_GPIOD_CLK_EN()			(RCC->APB2ENR |= 1<<5)
+#define RCC_GPIOE_CLK_EN()			(RCC->APB2ENR |= 1<<6)
 
-#define RCC_AFIO_CLK_EN()		(RCC->APB2ENR |= 1<<0)
+#define RCC_AFIO_CLK_EN()			(RCC->APB2ENR |= 1<<0)
+
+
+#define RCC_GPIOA_CLK_DIS()			(RCC->APB2ENR &= ~(1<<2))
+#define RCC_GPIOB_CLK_DIS()			(RCC->APB2ENR &= ~(1<<3))
+#define RCC_GPIOC_CLK_DIS()			(RCC->APB2ENR &= ~(1<<4))
+#define RCC_GPIOD_CLK_DIS()			(RCC->APB2ENR &= ~(1<<5))
+#define RCC_GPIOE_CLK_DIS()			(RCC->APB2ENR &= ~(1<<6))
+
+#define RCC_AFIO_CLK_DIS()			(RCC->APB2ENR &= ~(1<<0))
 
 //======================================================================================================
 
 //-*-*-*-*-*-*-*-*-*-*
-//clock Reset Macros
+//clock Reset && DeReset Macros
 //-*-*-*-*-*-*-*-*-*-*
 
-#define RCC_GPIOA_CLK_RESET()		(RCC->APB2ENR &= ~(1<<2))
-#define RCC_GPIOB_CLK_RESET()		(RCC->APB2ENR &= ~(1<<3))
-#define RCC_GPIOC_CLK_RESET()		(RCC->APB2ENR &= ~(1<<4))
-#define RCC_GPIOD_CLK_RESET()		(RCC->APB2ENR &= ~(1<<5))
-#define RCC_GPIOE_CLK_RESET()		(RCC->APB2ENR &= ~(1<<6))
+#define RCC_GPIOA_CLK_RESET()			(RCC->APB2RSTR |= 1<<2)
+#define RCC_GPIOB_CLK_RESET()			(RCC->APB2RSTR |= 1<<3)
+#define RCC_GPIOC_CLK_RESET()			(RCC->APB2RSTR |= 1<<4)
+#define RCC_GPIOD_CLK_RESET()			(RCC->APB2RSTR |= 1<<5)
+#define RCC_GPIOE_CLK_RESET()			(RCC->APB2RSTR |= 1<<6)
 
-#define RCC_AFIO_CLK_RESET()		(RCC->APB2ENR &= ~(1<<0))
+#define RCC_AFIO_CLK_RESET()			(RCC->APB2RSTR |= 1<<0)
+
+
+#define RCC_GPIOA_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<2))
+#define RCC_GPIOB_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<3))
+#define RCC_GPIOC_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<4))
+#define RCC_GPIOD_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<5))
+#define RCC_GPIOE_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<6))
+
+#define RCC_AFIO_CLK_DERESET()			(RCC->APB2RSTR &= ~(1<<0))
 
 //======================================================================================================
-
 #endif /* INC_STM32F103X6_H_ */
