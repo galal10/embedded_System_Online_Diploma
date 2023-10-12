@@ -232,22 +232,22 @@ typedef struct
 // NVIC IRQ enable/disable Macros:
 //-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*-*
 // Enable
-#define NVIC_IRQ6_EXTI0_Enable			(NVIC_ISER0 |= 1<<6)
-#define NVIC_IRQ7_EXTI1_Enable			(NVIC_ISER0 |= 1<<7)
-#define NVIC_IRQ8_EXTI2_Enable			(NVIC_ISER0 |= 1<<8)
-#define NVIC_IRQ9_EXTI3_Enable			(NVIC_ISER0 |= 1<<9)
-#define NVIC_IRQ10_EXTI4_Enable			(NVIC_ISER0 |= 1<<10)
-#define NVIC_IRQ23_EXTI5_9_Enable		(NVIC_ISER0 |= 1<<23)
-#define NVIC_IRQ40_EXTI10_15_Enable		(NVIC_ISER1 |= 1<<8)	// 40 -32 = 8
+#define NVIC_IRQ6_EXTI0_Enable()			(NVIC_ISER0 |= 1<<6)
+#define NVIC_IRQ7_EXTI1_Enable()			(NVIC_ISER0 |= 1<<7)
+#define NVIC_IRQ8_EXTI2_Enable()			(NVIC_ISER0 |= 1<<8)
+#define NVIC_IRQ9_EXTI3_Enable()			(NVIC_ISER0 |= 1<<9)
+#define NVIC_IRQ10_EXTI4_Enable()			(NVIC_ISER0 |= 1<<10)
+#define NVIC_IRQ23_EXTI5_9_Enable()			(NVIC_ISER0 |= 1<<23)
+#define NVIC_IRQ40_EXTI10_15_Enable()		(NVIC_ISER1 |= 1<<8)	// 40 -32 = 8
 
 // Disable
-#define NVIC_IRQ6_EXTI0_Disable			(NVIC_ICER0 |= 1<<6)
-#define NVIC_IRQ7_EXTI1_Disable			(NVIC_ICER0 |= 1<<7)
-#define NVIC_IRQ8_EXTI2_Disable			(NVIC_ICER0 |= 1<<8)
-#define NVIC_IRQ9_EXTI3_Disable			(NVIC_ICER0 |= 1<<9)
-#define NVIC_IRQ10_EXTI4_Disable		(NVIC_ICER0 |= 1<<10)
-#define NVIC_IRQ23_EXTI5_9_Disable		(NVIC_ICER0 |= 1<<23)
-#define NVIC_IRQ40_EXTI10_15_Disable	(NVIC_ICER1 |= 1<<8)	// 40 -32 = 8
+#define NVIC_IRQ6_EXTI0_Disable()			(NVIC_ICER0 |= 1<<6)
+#define NVIC_IRQ7_EXTI1_Disable()			(NVIC_ICER0 |= 1<<7)
+#define NVIC_IRQ8_EXTI2_Disable()			(NVIC_ICER0 |= 1<<8)
+#define NVIC_IRQ9_EXTI3_Disable()			(NVIC_ICER0 |= 1<<9)
+#define NVIC_IRQ10_EXTI4_Disable()			(NVIC_ICER0 |= 1<<10)
+#define NVIC_IRQ23_EXTI5_9_Disable()		(NVIC_ICER0 |= 1<<23)
+#define NVIC_IRQ40_EXTI10_15_Disable()		(NVIC_ICER1 |= 1<<8)	// 40 -32 = 8
 //======================================================================================================
 
 #endif /* INC_STM32F103X6_H_ */
