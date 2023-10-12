@@ -13,7 +13,7 @@
 
 typedef struct
 {
-	uint16_t 		EXTI_InputLineNumber;
+	uint8_t 		EXTI_InputLineNumber;
 	GPIO_TypeDef* 	GPIO_Port;
 	uint16_t		GPIO_PIN;
 	uint8_t			IVT_IRQ_Number;

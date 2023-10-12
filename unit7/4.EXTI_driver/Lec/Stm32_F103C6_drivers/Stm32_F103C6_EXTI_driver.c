@@ -32,7 +32,7 @@ static void (* GP_IRQ_CallBack[15]) (void);
  * =====================================================================================
  */
 
-static void Enable_NVIC(uint16_t IRQ)
+static void Enable_NVIC(uint8_t IRQ)
 {
 	switch(IRQ)
 	{
@@ -75,7 +75,7 @@ static void Enable_NVIC(uint16_t IRQ)
 	}
 }
 
-static void Disable_NVIC(uint16_t IRQ)
+static void Disable_NVIC(uint8_t IRQ)
 {
 	switch(IRQ)
 	{
