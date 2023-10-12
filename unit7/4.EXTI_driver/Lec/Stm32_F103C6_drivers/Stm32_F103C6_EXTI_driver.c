@@ -302,5 +302,5 @@ void EXTI15_10_IRQHandler(void)
 	if( EXTI->PR & 1<<12 ) { EXTI->PR |= 1<<12; GP_IRQ_CallBack[12](); }
 	if( EXTI->PR & 1<<13 ) { EXTI->PR |= 1<<13; GP_IRQ_CallBack[13](); }
 	if( EXTI->PR & 1<<14 ) { EXTI->PR |= 1<<14; GP_IRQ_CallBack[14](); }
-	if( EXTI->PR & 1<<14 ) { EXTI->PR |= 1<<15; GP_IRQ_CallBack[15](); }
+	if( EXTI->PR & 1<<15 ) { EXTI->PR |= 1<<15; GP_IRQ_CallBack[15](); }
 }
