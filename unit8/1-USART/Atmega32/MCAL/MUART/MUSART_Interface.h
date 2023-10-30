@@ -10,8 +10,12 @@
 
 #include "../../LIB/LSTD_TYPES.h"
 
+/* USART initialization */
 void MUSART_Vid_Init(void);
 
 /* USART send Data */
 void MUSART_Vid_SendData(u8 Copy_u8_data);
+
+/* USART receive Data */
+u8 MUSART_u8_ReceiveData(void);
 
