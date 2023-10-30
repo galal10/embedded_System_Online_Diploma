@@ -103,3 +103,26 @@ void SUSART_Vid_ReceiveStringAsynch(u8* Buffer)
 	Asynch_Receive_str = Buffer;
 }
 
+/**************************** Asynchronous but no code in ISR ****************************/
+void SUSART_Vid_SendString_NoCodeInt(u8* str)
+{
+	MUSART_Vid_SetCallBack(TXC_INT, Func_Tx_NoCodeInt);
+	MUSART_Vid_EnableInterrupt(TXC_INT);
+	static u8 index = 0;
+	if(UART_Flag)
+	{
+		if(str[index])
+		{
+			MUSART_Vid_SendDataNoBlock(str[index]);
+			index++;
+		}
+
+		else
+		{
+			MUSART_Vid_DisableInterrupt(TXC_INT);
+			index = 0;
+		}
+		UART_Flag = Idle;
+	}
+}
+
