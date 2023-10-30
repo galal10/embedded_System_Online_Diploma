@@ -33,4 +33,9 @@ void MUSART_Vid_Init(void)
 #else
 	#error "USART mode is not valid"
 #endif
+
+	/* Parity mode */
+	LOC_u8Copy_UCSRC &= USART_PARITY_MASK;
+	LOC_u8Copy_UCSRC |= USART_PARITY_MODE << UPM0;
+
 }
