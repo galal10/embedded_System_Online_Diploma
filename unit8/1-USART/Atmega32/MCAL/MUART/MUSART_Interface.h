@@ -10,6 +10,14 @@
 
 #include "../../LIB/LSTD_TYPES.h"
 
+/* Copy_u8_InterruptID Options:*/
+typedef enum
+{
+	RXC_INT = 0,
+	UDRE_INT,
+	TXC_INT
+}USART_InterruptID_t;
+
 /* USART initialization */
 void MUSART_Vid_Init(void);
 
