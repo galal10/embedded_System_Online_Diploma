@@ -142,4 +142,14 @@ u8 MUSART_u8_ReceiveDataNoBlock(void)
 	return UDR;
 }
 
+/**************************** Enable USART Interrupts *******************************/
+void MUSART_Vid_EnableInterrupt(u8 Copy_u8_InterruptID)
+{
+	switch(Copy_u8_InterruptID)
+	{
+		case RXC_INT  : SET_BIT(UCSRB, RXCIE); break;
+		case UDRE_INT : SET_BIT(UCSRB, UDRIE); break;
+		case TXC_INT  : SET_BIT(UCSRB, TXCIE); break;
+	}
+}
 }
