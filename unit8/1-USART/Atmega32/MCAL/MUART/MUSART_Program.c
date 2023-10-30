@@ -177,4 +177,27 @@ void MUSART_Vid_SetCallBack(u8 Copy_u8_InterruptID, void (*P_Vid_CallBack)(void)
 	}
 }
 
+/*************************************** ISR *******************************************/
+ISR(USART_RXC)
+{
+	if(GP_UART_CallBack[RXC_INT] != NULL_PTR)
+	{
+		GP_UART_CallBack[RXC_INT]();
+	}
+}
+
+ISR(USART_UDRE)
+{
+	if(GP_UART_CallBack[UDRE_INT] != NULL_PTR)
+	{
+		GP_UART_CallBack[UDRE_INT]();
+	}
+}
+
+ISR(USART_TXC)
+{
+	if(GP_UART_CallBack[TXC_INT] != NULL_PTR)
+	{
+		GP_UART_CallBack[TXC_INT]();
+	}
 }
