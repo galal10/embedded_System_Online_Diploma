@@ -11,6 +11,7 @@
 /******************************* Variables *******************************/
 static u8 *Asynch_Send_str = NULL_PTR;
 static u8 *Asynch_Receive_str = NULL_PTR;
+static volatile UART_Flag_t UART_Flag = Tx;
 /******************************* Tx CallBack Function *******************************/
 static void Func_Tx(void)
 {
@@ -30,6 +31,13 @@ static void Func_Tx(void)
 		index = 1;
 	}
 }
+
+static void Func_Tx_NoCodeInt(void)
+{
+	UART_Flag = Tx;
+}
+
+/******************************* Rx CallBack Function *******************************/
 static void Func_Rx(void)
 {
 	static u8 index = 0;
