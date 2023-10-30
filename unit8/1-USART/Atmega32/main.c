@@ -25,3 +25,5 @@ int main(void)
 	/* Enable global interrupt */
 	MGIE_Vid_Enable();
 
+	u8 num = 0, str[100] = "Receive until Enter", Buffer[100] = {0};
+
