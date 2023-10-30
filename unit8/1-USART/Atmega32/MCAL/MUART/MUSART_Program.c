@@ -13,4 +13,12 @@
 void MUSART_Vid_Init(void)
 {
 	u8 LOC_u8Copy_UCSRC = 0;
+
+	/* frame */
+	/* select USART mode */
+#if USART_MODE == USART_ASYNCHRONOUS_MODE
+	CLR_BIT(LOC_u8Copy_UCSRC, UMSEL);
+#elif USART_MODE == USART_SYNCHRONOUS_MODE
+	SET_BIT(LOC_u8Copy_UCSRC, UMSEL);
+
 }
