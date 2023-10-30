@@ -76,4 +76,10 @@ void MUSART_Vid_Init(void)
 	SET_BIT(LOC_u8Copy_UCSRC, URSEL);
 	/* Set LOC_u8Copy_UCSRC Value in UCSRC Register */
 	UCSRC = LOC_u8Copy_UCSRC;
+	/********************************************/
+
+	/* Baud Rate ==> 9600 */
+	UBBRL = USART_UBRR_VALUE;
+	/********************************************/
+
 }
