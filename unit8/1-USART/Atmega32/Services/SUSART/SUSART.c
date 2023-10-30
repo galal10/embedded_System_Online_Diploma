@@ -23,6 +23,12 @@ static void Func_Tx(void)
 		index++;
 	}
 
+	else
+	{
+		MUSART_Vid_DisableInterrupt(TXC_INT);
+		index = 1;
+	}
+}
 /******************************* Synchronous *******************************/
 void SUSART_Vid_SendString(u8* P_u8_str)
 {
