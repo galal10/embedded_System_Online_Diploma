@@ -19,3 +19,7 @@ void MUSART_Vid_SendData(u8 Copy_u8_data);
 /* USART receive Data */
 u8 MUSART_u8_ReceiveData(void);
 
+void MUSART_Vid_SendDataNoBlock(u8 Copy_u8_data);
+
+u8 MUSART_u8_ReceiveDataNoBlock(void);
+
