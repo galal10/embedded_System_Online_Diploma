@@ -70,3 +70,15 @@ void SUSART_Vid_SendStringAsynch(u8* str)
 	Asynch_Send_str = str;
 }
 
+void SUSART_Vid_ReceiveStringAsynch(u8* Buffer)
+{
+	/* Set CallBack function */
+	MUSART_Vid_SetCallBack(RXC_INT, Func_Rx);
+
+	/* Enable Rx interrupt */
+	MUSART_Vid_EnableInterrupt(RXC_INT);
+
+	/* copy the address of buffer to global array */
+	Asynch_Receive_str = Buffer;
+}
+
