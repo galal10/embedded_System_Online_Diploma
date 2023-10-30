@@ -134,3 +134,26 @@ void SUSART_Vid_SendString_NoCodeInt(u8* str)
 	}
 }
 
+/******************************* Check Sum Algorithm ************************/
+void SUSART_Vid_SendString_MyProtocol(u8* P_u8_str)
+{
+	u8 len = 0;
+	u16 sum = 0;
+
+	/* check sum algorithm [ DataLen - Data - sum_of_data ] */
+	while(P_u8_str[len] != '\0')
+	{
+		sum += P_u8_str[len];
+		len++;
+	}
+
+	/* send length of the string */
+	MUSART_Vid_SendData(len);
+
+	/* send pure data */
+	SUSART_Vid_SendString(P_u8_str);
+
+	/* send LSB the MSB */
+	MUSART_Vid_SendData((u8)sum);
+	MUSART_Vid_SendData((sum>>8));
+}
