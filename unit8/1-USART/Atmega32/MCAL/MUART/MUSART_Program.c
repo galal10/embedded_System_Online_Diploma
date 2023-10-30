@@ -152,4 +152,16 @@ void MUSART_Vid_EnableInterrupt(u8 Copy_u8_InterruptID)
 		case TXC_INT  : SET_BIT(UCSRB, TXCIE); break;
 	}
 }
+
+/**************************** Disable USART Interrupts ******************************/
+void MUSART_Vid_DisableInterrupt(u8 Copy_u8_InterruptID)
+{
+	switch(Copy_u8_InterruptID)
+	{
+		case RXC_INT  : CLR_BIT(UCSRB, RXCIE); break;
+		case UDRE_INT : CLR_BIT(UCSRB, UDRIE); break;
+		case TXC_INT  : CLR_BIT(UCSRB, TXCIE); break;
+	}
+}
+
 }
