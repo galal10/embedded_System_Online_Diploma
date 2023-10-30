@@ -18,3 +18,5 @@ int main(void)
 	MDIO_Error_state_SetPinDirection(MDIO_PORTD, PIN1, PIN_INPUT);
 	/* Set Rx pin as input pin */
 	MDIO_Error_state_SetPinDirection(MDIO_PORTD, PIN0, PIN_INPUT);
+	/* init LCD */
+	HCLCD_Vid_4Bits_Init();
