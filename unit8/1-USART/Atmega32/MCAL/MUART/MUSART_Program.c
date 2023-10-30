@@ -82,4 +82,13 @@ void MUSART_Vid_Init(void)
 	UBBRL = USART_UBRR_VALUE;
 	/********************************************/
 
+	/* USART RX Complete Interrupt mode */
+#if RX_Complete_Interrupt == Enable
+	SET_BIT(UCSRB, RXCIE);
+#elif RX_Complete_Interrupt == Disable
+	CLR_BIT(UCSRB, RXCIE);
+#else
+	#error "USART RX Complete Interrupt mode is not valid"
+#endif
+
 }
