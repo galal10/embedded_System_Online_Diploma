@@ -10,6 +10,8 @@
 #include "MUSART_Config.h"
 #include "MUSART_Private.h"
 
+static void (* GP_UART_CallBack[UART_ISR])(void) = {NULL_PTR};
+
 void MUSART_Vid_Init(void)
 {
 	u8 LOC_u8Copy_UCSRC = 0;
@@ -161,6 +163,17 @@ void MUSART_Vid_DisableInterrupt(u8 Copy_u8_InterruptID)
 		case RXC_INT  : CLR_BIT(UCSRB, RXCIE); break;
 		case UDRE_INT : CLR_BIT(UCSRB, UDRIE); break;
 		case TXC_INT  : CLR_BIT(UCSRB, TXCIE); break;
+	}
+}
+
+/************************** Set CallBack functions *********************************/
+void MUSART_Vid_SetCallBack(u8 Copy_u8_InterruptID, void (*P_Vid_CallBack)(void))
+{
+	switch(Copy_u8_InterruptID)
+	{
+		case RXC_INT  : GP_UART_CallBack[RXC_INT]  = P_Vid_CallBack; break;
+		case UDRE_INT : GP_UART_CallBack[UDRE_INT] = P_Vid_CallBack; break;
+		case TXC_INT  : GP_UART_CallBack[TXC_INT]  = P_Vid_CallBack; break;
 	}
 }
 
