@@ -114,4 +114,12 @@ void MUSART_Vid_Init(void)
 	SET_BIT(UCSRB, RXEN);
 }
 
+/***************************** Polling ********************************************/
+void MUSART_Vid_SendData(u8 Copy_u8_data)
+{
+	/* wait until empty flag is set */
+	while( GET_BIT(UCSRA, UDRE) == 0 );
+
+	UDR = Copy_u8_data;
+}
 }
