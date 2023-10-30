@@ -109,4 +109,9 @@ void MUSART_Vid_Init(void)
 	#error "USART Data Register Empty Interrupt mode is not valid"
 #endif
 
+	/* Enable Peripheral */
+	SET_BIT(UCSRB, TXEN);
+	SET_BIT(UCSRB, RXEN);
+}
+
 }
