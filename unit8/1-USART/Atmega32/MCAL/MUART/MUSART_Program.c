@@ -122,4 +122,12 @@ void MUSART_Vid_SendData(u8 Copy_u8_data)
 
 	UDR = Copy_u8_data;
 }
+
+u8 MUSART_u8_ReceiveData(void)
+{
+	/* wait until register Complete flag is set */
+	while( GET_BIT(UCSRA, RXC) == 0 );
+
+	return UDR;
+}
 }
