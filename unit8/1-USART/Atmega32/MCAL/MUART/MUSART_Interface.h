@@ -10,3 +10,4 @@
 
 #include "../../LIB/LSTD_TYPES.h"
 
+void MUSART_Vid_Init(void);
