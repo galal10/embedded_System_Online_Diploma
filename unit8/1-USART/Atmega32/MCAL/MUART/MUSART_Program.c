@@ -21,4 +21,12 @@ void MUSART_Vid_Init(void)
 #elif USART_MODE == USART_SYNCHRONOUS_MODE
 	SET_BIT(LOC_u8Copy_UCSRC, UMSEL);
 
+	/* set CLK polarity -> with synch. mode only */
+	#if USART_CLOCK_POLARITY == USART_RisingTx_FallingRx
+		CLR_BIT(UCSRC, UCPOL);
+	#elif USART_CLOCK_POLARITY == USART_FallingTx_RisingRx
+		SET_BIT(UCSRC, UCPOL);
+	#else
+		#error "USART CLK polarity mode is not valid"
+	#endif
 }
