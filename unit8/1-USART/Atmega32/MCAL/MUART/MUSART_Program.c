@@ -10,3 +10,6 @@
 #include "MUSART_Config.h"
 #include "MUSART_Private.h"
 
+void MUSART_Vid_Init(void)
+{
+}
