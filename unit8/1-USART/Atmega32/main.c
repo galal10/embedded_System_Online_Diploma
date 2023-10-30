@@ -28,3 +28,7 @@ int main(void)
 	u8 num = 0, str[100] = "Receive until Enter", Buffer[100] = {0};
 
 	SUSART_Vid_ReceiveStringAsynch(Buffer);
+
+	while(1)
+	{
+		SUSART_Vid_SendString_NoCodeInt(str);
