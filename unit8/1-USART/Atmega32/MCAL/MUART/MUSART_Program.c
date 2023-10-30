@@ -38,4 +38,13 @@ void MUSART_Vid_Init(void)
 	LOC_u8Copy_UCSRC &= USART_PARITY_MASK;
 	LOC_u8Copy_UCSRC |= USART_PARITY_MODE << UPM0;
 
+	/* Stop bits mode */
+#if USART_STOP_MODE == USART_STOP_ONE_BIT
+	CLR_BIT(LOC_u8Copy_UCSRC, USBS);
+#elif USART_STOP_MODE == USART_STOP_TWO_BIT
+	SET_BIT(LOC_u8Copy_UCSRC, USBS);
+#else
+	#error "USART Stop bit mode is not valid"
+#endif
+
 }
