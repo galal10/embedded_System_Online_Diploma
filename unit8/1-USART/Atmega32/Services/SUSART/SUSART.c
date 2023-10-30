@@ -10,6 +10,7 @@
 
 /******************************* Variables *******************************/
 static u8 *Asynch_Send_str = NULL_PTR;
+static u8 *Asynch_Receive_str = NULL_PTR;
 /******************************* Tx CallBack Function *******************************/
 static void Func_Tx(void)
 {
@@ -29,6 +30,26 @@ static void Func_Tx(void)
 		index = 1;
 	}
 }
+static void Func_Rx(void)
+{
+	static u8 index = 0;
+
+	/* Receive the frame */
+	Asynch_Receive_str[index] = MUSART_u8_ReceiveDataNoBlock();
+
+	if(Asynch_Receive_str[index] == 0x0d)
+	{
+		MUSART_Vid_DisableInterrupt(RXC_INT);
+		Asynch_Receive_str[index] = '\0';
+		index = 0;
+	}
+
+	else
+	{
+		index++;
+	}
+}
+
 /******************************* Synchronous *******************************/
 void SUSART_Vid_SendString(u8* P_u8_str)
 {
