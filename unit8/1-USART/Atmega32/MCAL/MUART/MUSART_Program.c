@@ -29,4 +29,8 @@ void MUSART_Vid_Init(void)
 	#else
 		#error "USART CLK polarity mode is not valid"
 	#endif
+
+#else
+	#error "USART mode is not valid"
+#endif
 }
