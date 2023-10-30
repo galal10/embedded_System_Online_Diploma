@@ -91,4 +91,13 @@ void MUSART_Vid_Init(void)
 	#error "USART RX Complete Interrupt mode is not valid"
 #endif
 
+	/* USART TX Complete Interrupt mode */
+#if TX_Complete_Interrupt == Enable
+	SET_BIT(UCSRB, TXCIE);
+#elif TX_Complete_Interrupt == Disable
+	CLR_BIT(UCSRB, TXCIE);
+#else
+	#error "USART TX Complete Interrupt mode is not valid"
+#endif
+
 }
