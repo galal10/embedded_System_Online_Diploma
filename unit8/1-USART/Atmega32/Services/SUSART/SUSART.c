@@ -157,3 +157,39 @@ void SUSART_Vid_SendString_MyProtocol(u8* P_u8_str)
 	MUSART_Vid_SendData((u8)sum);
 	MUSART_Vid_SendData((sum>>8));
 }
+
+u8 SUSART_u8_ReceiveString_MyProtocol(u8* P_u8_buffer)
+{
+	/* length of the string */
+	u8 	status, i, len = MUSART_u8_ReceiveData();
+
+	/* vars to check sum */
+	u16 sum_rece, sum_cal = 0;
+	u8 FirstByte = 0, SecondByte = 0;
+
+	for(i = 0; i < len; i++)
+	{
+		P_u8_buffer[i] = MUSART_u8_ReceiveData();
+		sum_cal += P_u8_buffer[i];
+	}
+
+	P_u8_buffer[i] = '\0';
+
+	FirstByte = MUSART_u8_ReceiveData();
+	SecondByte = MUSART_u8_ReceiveData();
+	/* the sum that received */
+	sum_rece = FirstByte | (SecondByte << 8);
+
+
+	if(sum_rece == sum_cal)
+	{
+		status = USART_FRAME_OK;
+	}
+
+	else
+	{
+		status = USART_FRAME_NOK;
+	}
+
+	return status;
+}
