@@ -12,4 +12,5 @@
 
 void MUSART_Vid_Init(void)
 {
+	u8 LOC_u8Copy_UCSRC = 0;
 }
