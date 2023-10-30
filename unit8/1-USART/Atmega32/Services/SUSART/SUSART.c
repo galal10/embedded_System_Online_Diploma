@@ -7,6 +7,22 @@
 
 #include "../../MCAL/MUART/MUSART_Interface.h"
 #include "SUSART.h"
+
+/******************************* Variables *******************************/
+static u8 *Asynch_Send_str = NULL_PTR;
+/******************************* Tx CallBack Function *******************************/
+static void Func_Tx(void)
+{
+	static u8 index = 1;
+
+	if(Asynch_Send_str[index] != '\0')
+	{
+		/* send the remaining frame */
+		MUSART_Vid_SendDataNoBlock(Asynch_Send_str[index]);
+		/* increase index to send the next frame */
+		index++;
+	}
+
 /******************************* Synchronous *******************************/
 void SUSART_Vid_SendString(u8* P_u8_str)
 {
