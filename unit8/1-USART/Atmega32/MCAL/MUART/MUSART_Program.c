@@ -100,4 +100,13 @@ void MUSART_Vid_Init(void)
 	#error "USART TX Complete Interrupt mode is not valid"
 #endif
 
+	/* USART Data Register Empty Interrupt mode */
+#if DataReg_Empty_Interrupt == Enable
+	SET_BIT(UCSRB, UDRIE);
+#elif DataReg_Empty_Interrupt == Disable
+	CLR_BIT(UCSRB, UDRIE);
+#else
+	#error "USART Data Register Empty Interrupt mode is not valid"
+#endif
+
 }
