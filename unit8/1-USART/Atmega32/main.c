@@ -32,3 +32,6 @@ int main(void)
 	while(1)
 	{
 		SUSART_Vid_SendString_NoCodeInt(str);
+
+		HCLCD_Vid_SetPosition_4Bits(2, 0);
+		HCLCD_Vid_Write_String_4Bits(Buffer);
