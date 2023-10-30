@@ -8,3 +8,5 @@
 #ifndef MUSART_INTERFACE_H_
 #define MUSART_INTERFACE_H_
 
+#include "../../LIB/LSTD_TYPES.h"
+
