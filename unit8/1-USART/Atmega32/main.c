@@ -20,3 +20,5 @@ int main(void)
 	MDIO_Error_state_SetPinDirection(MDIO_PORTD, PIN0, PIN_INPUT);
 	/* init LCD */
 	HCLCD_Vid_4Bits_Init();
+	/* init UART */
+	MUSART_Vid_Init();
