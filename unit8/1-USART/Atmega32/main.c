@@ -22,3 +22,6 @@ int main(void)
 	HCLCD_Vid_4Bits_Init();
 	/* init UART */
 	MUSART_Vid_Init();
+	/* Enable global interrupt */
+	MGIE_Vid_Enable();
+
