@@ -26,3 +26,6 @@ u8 MUSART_u8_ReceiveDataNoBlock(void);
 /* Enable USART Interrupts */
 void MUSART_Vid_EnableInterrupt(u8 Copy_u8_InterruptID);
 
+/* Disable USART Interrupts */
+void MUSART_Vid_DisableInterrupt(u8 Copy_u8_InterruptID);
+
