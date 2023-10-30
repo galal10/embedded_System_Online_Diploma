@@ -32,3 +32,19 @@ void SUSART_Vid_ReceiveString(u8* P_u8_buffer)
 	P_u8_buffer[index] = '\0';
 }
 
+/******************************* Asynchronous *******************************/
+void SUSART_Vid_SendStringAsynch(u8* str)
+{
+	/* Set CallBack function */
+	MUSART_Vid_SetCallBack(TXC_INT, Func_Tx);
+
+	/* Enable interrupt Tx */
+	MUSART_Vid_EnableInterrupt(TXC_INT);
+
+	/* Send first Byte */
+	MUSART_Vid_SendDataNoBlock(str[0]);
+
+	/* copy the address of string to the global array */
+	Asynch_Send_str = str;
+}
+
