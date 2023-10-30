@@ -29,3 +29,7 @@ void MUSART_Vid_EnableInterrupt(u8 Copy_u8_InterruptID);
 /* Disable USART Interrupts */
 void MUSART_Vid_DisableInterrupt(u8 Copy_u8_InterruptID);
 
+/* Set CallBack functions */
+void MUSART_Vid_SetCallBack(u8 Copy_u8_InterruptID, void (*P_Vid_CallBack)(void));
+
+#endif /* MUSART_INTERFACE_H_ */
