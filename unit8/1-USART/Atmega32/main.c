@@ -35,3 +35,14 @@ int main(void)
 
 		HCLCD_Vid_SetPosition_4Bits(2, 0);
 		HCLCD_Vid_Write_String_4Bits(Buffer);
+
+		HCLCD_Vid_SetPosition_4Bits(1, 0);
+		HCLCD_Vid_Write_Number_4Bits(num);
+		num++;
+		_delay_ms(300);
+
+		if(num == 10) { num = 0; }
+	}
+
+	return 0;
+}
