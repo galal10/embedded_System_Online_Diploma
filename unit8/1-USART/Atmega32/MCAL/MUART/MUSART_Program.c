@@ -72,4 +72,8 @@ void MUSART_Vid_Init(void)
 	#error "USART Data size mode is not valid"
 #endif
 
+	/* select UCSRC Register*/
+	SET_BIT(LOC_u8Copy_UCSRC, URSEL);
+	/* Set LOC_u8Copy_UCSRC Value in UCSRC Register */
+	UCSRC = LOC_u8Copy_UCSRC;
 }
