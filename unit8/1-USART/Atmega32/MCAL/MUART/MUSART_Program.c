@@ -130,4 +130,11 @@ u8 MUSART_u8_ReceiveData(void)
 
 	return UDR;
 }
+
+/***************************** Interrupt ********************************************/
+void MUSART_Vid_SendDataNoBlock(u8 Copy_u8_data)
+{
+	UDR = Copy_u8_data;
+}
+
 }
