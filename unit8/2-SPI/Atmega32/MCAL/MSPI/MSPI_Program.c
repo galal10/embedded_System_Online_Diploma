@@ -102,3 +102,11 @@ void MSPI_Vid_Slave_Init(void)
 #endif
 }
 
+u8 MSPI_u8_Send_Receive(u8 Copy_u8_char)
+{
+	/* Send Char */
+	SPDR = Copy_u8_char;
+	/* wait until SPI flag is set */
+	while(GET_BIT(SPSR, SPIF) == 0);
+	return SPDR;
+}
