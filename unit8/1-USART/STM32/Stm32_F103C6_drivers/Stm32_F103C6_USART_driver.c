@@ -12,7 +12,7 @@
  * 							Generic Variables
  * =====================================================================================
  */
-static USART_Config_t* Global_USART_Config[3] = {NULL};
+static USART_Config_t Global_USART_Config[3];
 
 
 /*
@@ -37,19 +37,19 @@ void MCAL_USART_Init(USART_TypeDef* USARTx, USART_Config_t* USART_Config)
 	if(USARTx == USART1)
 	{
 		RCC_USART1_CLK_EN();
-		Global_USART_Config[0] = USART_Config;
+		Global_USART_Config[0] = *USART_Config;
 	}
 
 	else if(USARTx == USART2)
 	{
 		RCC_USART2_CLK_EN();
-		Global_USART_Config[1] = USART_Config;
+		Global_USART_Config[1] = *USART_Config;
 	}
 
 	else if(USARTx == USART3)
 	{
 		RCC_USART3_CLK_EN();
-		Global_USART_Config[2] = USART_Config;
+		Global_USART_Config[2] = *USART_Config;
 	}
 
 	//Enable the USART by writing the UE bit in USART_CR1 register to 1
@@ -177,7 +177,7 @@ void MCAL_USART_GPIO_Set_Pins(USART_TypeDef* USARTx)
 		MCAL_GPIO_init(GPIOA, &PinCfg);
 
 		//USART1_RTS: PA12
-		if( (Global_USART_Config[0]->HwFlowCtl == USART_HwFlowCtl_RTS) || (Global_USART_Config[0]->HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
+		if( (Global_USART_Config[0].HwFlowCtl == USART_HwFlowCtl_RTS) || (Global_USART_Config[0].HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
 		{
 			PinCfg.GPIO_PinNumber = GPIO_PIN_12;
 			PinCfg.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
@@ -185,7 +185,7 @@ void MCAL_USART_GPIO_Set_Pins(USART_TypeDef* USARTx)
 		}
 
 		//USART1_CTS: PA11
-		if( (Global_USART_Config[0]->HwFlowCtl == USART_HwFlowCtl_CTS) || (Global_USART_Config[0]->HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
+		if( (Global_USART_Config[0].HwFlowCtl == USART_HwFlowCtl_CTS) || (Global_USART_Config[0].HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
 		{
 			PinCfg.GPIO_PinNumber = GPIO_PIN_11;
 			PinCfg.GPIO_mode = GPIO_INPUT_FLO_MODE;
@@ -206,7 +206,7 @@ void MCAL_USART_GPIO_Set_Pins(USART_TypeDef* USARTx)
 		MCAL_GPIO_init(GPIOA, &PinCfg);
 
 		//USART2_RTS: PA1
-		if( (Global_USART_Config[1]->HwFlowCtl == USART_HwFlowCtl_RTS) || (Global_USART_Config[1]->HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
+		if( (Global_USART_Config[1].HwFlowCtl == USART_HwFlowCtl_RTS) || (Global_USART_Config[1].HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
 		{
 			PinCfg.GPIO_PinNumber = GPIO_PIN_1;
 			PinCfg.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
@@ -214,7 +214,7 @@ void MCAL_USART_GPIO_Set_Pins(USART_TypeDef* USARTx)
 		}
 
 		//USART2_CTS: PA0
-		if( (Global_USART_Config[1]->HwFlowCtl == USART_HwFlowCtl_CTS) || (Global_USART_Config[1]->HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
+		if( (Global_USART_Config[1].HwFlowCtl == USART_HwFlowCtl_CTS) || (Global_USART_Config[1].HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
 		{
 			PinCfg.GPIO_PinNumber = GPIO_PIN_0;
 			PinCfg.GPIO_mode = GPIO_INPUT_FLO_MODE;
@@ -235,7 +235,7 @@ void MCAL_USART_GPIO_Set_Pins(USART_TypeDef* USARTx)
 		MCAL_GPIO_init(GPIOB, &PinCfg);
 
 		//USART3_RTS: PB14
-		if( (Global_USART_Config[2]->HwFlowCtl == USART_HwFlowCtl_RTS) || (Global_USART_Config[2]->HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
+		if( (Global_USART_Config[2].HwFlowCtl == USART_HwFlowCtl_RTS) || (Global_USART_Config[2].HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
 		{
 			PinCfg.GPIO_PinNumber = GPIO_PIN_14;
 			PinCfg.GPIO_mode = GPIO_OUTPUT_AF_PP_MODE;
@@ -243,7 +243,7 @@ void MCAL_USART_GPIO_Set_Pins(USART_TypeDef* USARTx)
 		}
 
 		//USART3_CTS: PB13
-		if( (Global_USART_Config[2]->HwFlowCtl == USART_HwFlowCtl_CTS) || (Global_USART_Config[2]->HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
+		if( (Global_USART_Config[2].HwFlowCtl == USART_HwFlowCtl_CTS) || (Global_USART_Config[2].HwFlowCtl == USART_HwFlowCtl_RTS_CTS) )
 		{
 			PinCfg.GPIO_PinNumber = GPIO_PIN_13;
 			PinCfg.GPIO_mode = GPIO_INPUT_FLO_MODE;
@@ -281,7 +281,7 @@ void MCAL_USART_SendData(USART_TypeDef* USARTx, uint16_t* pTxBuffer, enum Pollin
 	// check if it USART1, USART2 or USART3
 	if(USARTx == USART1)
 	{
-		if(Global_USART_Config[0]->PayloadLen == USART_PayloadLen_9B)
+		if(Global_USART_Config[0].PayloadLen == USART_PayloadLen_9B)
 		{
 			USARTx->DR = (*pTxBuffer & 0x1FF);
 		}
@@ -293,7 +293,7 @@ void MCAL_USART_SendData(USART_TypeDef* USARTx, uint16_t* pTxBuffer, enum Pollin
 
 	else if(USARTx == USART2)
 	{
-		if(Global_USART_Config[1]->PayloadLen == USART_PayloadLen_9B)
+		if(Global_USART_Config[1].PayloadLen == USART_PayloadLen_9B)
 		{
 			USARTx->DR = (*pTxBuffer & 0x1FF);
 		}
@@ -305,7 +305,7 @@ void MCAL_USART_SendData(USART_TypeDef* USARTx, uint16_t* pTxBuffer, enum Pollin
 
 	else if(USARTx == USART3)
 	{
-		if(Global_USART_Config[2]->PayloadLen == USART_PayloadLen_9B)
+		if(Global_USART_Config[2].PayloadLen == USART_PayloadLen_9B)
 		{
 			USARTx->DR = (*pTxBuffer & 0x1FF);
 		}
@@ -353,10 +353,10 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
 	//When receiving with the parity enabled, the value read in the MSB bit is the received parity bit.
 	if(USARTx == USART1)
 	{
-		if(Global_USART_Config[0]->PayloadLen == USART_PayloadLen_9B)
+		if(Global_USART_Config[0].PayloadLen == USART_PayloadLen_9B)
 		{
 			//No parity in a frame
-			if(Global_USART_Config[0]->Parity == USART_Parity_NONE)
+			if(Global_USART_Config[0].Parity == USART_Parity_NONE)
 			{
 				//No parity ,so all 9bits are considered as data
 				*((uint16_t*)pRxBuffer) = USARTx->DR;
@@ -372,7 +372,7 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
 		else
 		{
 			//No parity in a frame
-			if(Global_USART_Config[0]->Parity == USART_Parity_NONE)
+			if(Global_USART_Config[0].Parity == USART_Parity_NONE)
 			{
 				//No parity ,so all 8bits are considered as data
 				*((uint16_t*)pRxBuffer) = (USARTx->DR & (uint8_t)0xFF);
@@ -388,10 +388,10 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
 
 	else if(USARTx == USART2)
 	{
-		if(Global_USART_Config[1]->PayloadLen == USART_PayloadLen_9B)
+		if(Global_USART_Config[1].PayloadLen == USART_PayloadLen_9B)
 		{
 			//No parity in a frame
-			if(Global_USART_Config[1]->Parity == USART_Parity_NONE)
+			if(Global_USART_Config[1].Parity == USART_Parity_NONE)
 			{
 				//No parity ,so all 9bits are considered as data
 				*((uint16_t*)pRxBuffer) = USARTx->DR;
@@ -407,7 +407,7 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
 		else
 		{
 			//No parity in a frame
-			if(Global_USART_Config[1]->Parity == USART_Parity_NONE)
+			if(Global_USART_Config[1].Parity == USART_Parity_NONE)
 			{
 				//No parity ,so all 8bits are considered as data
 				*((uint16_t*)pRxBuffer) = (USARTx->DR & (uint8_t)0xFF);
@@ -424,10 +424,10 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
 
 	else if(USARTx == USART3)
 	{
-		if(Global_USART_Config[2]->PayloadLen == USART_PayloadLen_9B)
+		if(Global_USART_Config[2].PayloadLen == USART_PayloadLen_9B)
 		{
 			//No parity in a frame
-			if(Global_USART_Config[2]->Parity == USART_Parity_NONE)
+			if(Global_USART_Config[2].Parity == USART_Parity_NONE)
 			{
 				//No parity ,so all 9bits are considered as data
 				*((uint16_t*)pRxBuffer) = USARTx->DR;
@@ -443,7 +443,7 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
 		else
 		{
 			//No parity in a frame
-			if(Global_USART_Config[2]->Parity == USART_Parity_NONE)
+			if(Global_USART_Config[2].Parity == USART_Parity_NONE)
 			{
 				//No parity ,so all 8bits are considered as data
 				*((uint16_t*)pRxBuffer) = (USARTx->DR & (uint8_t)0xFF);
@@ -467,15 +467,15 @@ void MCAL_USART_ReceiveData(USART_TypeDef* USARTx, uint16_t* pRxBuffer, enum Pol
  */
 void USART1_IRQHandler(void)
 {
-	Global_USART_Config[0]->P_IRQ_CallBack();
+	Global_USART_Config[0].P_IRQ_CallBack();
 }
 
 void USART2_IRQHandler(void)
 {
-	Global_USART_Config[1]->P_IRQ_CallBack();
+	Global_USART_Config[1].P_IRQ_CallBack();
 }
 
 void USART3_IRQHandler(void)
 {
-	Global_USART_Config[2]->P_IRQ_CallBack();
+	Global_USART_Config[2].P_IRQ_CallBack();
 }
