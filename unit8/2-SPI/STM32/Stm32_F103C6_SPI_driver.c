@@ -25,7 +25,7 @@
  * 							Generic Variables
  * =====================================================================================
  */
-static SPI_Config_t* Global_SPI_Config[SPI_NUM] = {NULL};
+static SPI_Config_t Global_SPI_Config[SPI_NUM];
 
 /*
  * =====================================================================================
@@ -50,12 +50,12 @@ void MCAL_SPI_Init(SPI_TypeDef* SPIx, SPI_Config_t* SPI_Config)
 
 	if(SPIx == SPI1)
 	{
-		Global_SPI_Config[SPI1_INDEX] = SPI_Config;
+		Global_SPI_Config[SPI1_INDEX] = *SPI_Config;
 		RCC_SPI1_CLK_EN();
 	}
 	else if(SPIx == SPI2)
 	{
-		Global_SPI_Config[SPI2_INDEX] = SPI_Config;
+		Global_SPI_Config[SPI2_INDEX] = *SPI_Config;
 		RCC_SPI2_CLK_EN();
 	}
 
@@ -146,10 +146,10 @@ void MCAL_SPI_GPIO_Set_Pins(SPI_TypeDef* SPIx)
 	if(SPIx == SPI1)
 	{
 
-		if(Global_SPI_Config[SPI1_INDEX]->SPI_Mode == SPI_Mode_Master)
+		if(Global_SPI_Config[SPI1_INDEX].SPI_Mode == SPI_Mode_Master)
 		{
 			//NSS  : PA4
-			switch(Global_SPI_Config[SPI1_INDEX]->NSS)
+			switch(Global_SPI_Config[SPI1_INDEX].NSS)
 			{
 			//Hardware master output disabled : Input floating
 			case SPI_NSS_HW_Master_SS_output_Disable:
@@ -203,7 +203,7 @@ void MCAL_SPI_GPIO_Set_Pins(SPI_TypeDef* SPIx)
 		else
 		{
 			//NSS  : PA4
-			switch(Global_SPI_Config[SPI1_INDEX]->NSS)
+			switch(Global_SPI_Config[SPI1_INDEX].NSS)
 			{
 			//Hardware slave : Input floating
 			case SPI_NSS_HW_Slave:
@@ -245,10 +245,10 @@ void MCAL_SPI_GPIO_Set_Pins(SPI_TypeDef* SPIx)
 	else if(SPIx == SPI2)
 	{
 
-		if(Global_SPI_Config[SPI2_INDEX]->SPI_Mode == SPI_Mode_Master)
+		if(Global_SPI_Config[SPI2_INDEX].SPI_Mode == SPI_Mode_Master)
 		{
 			//NSS  : PB12
-			switch(Global_SPI_Config[SPI2_INDEX]->NSS)
+			switch(Global_SPI_Config[SPI2_INDEX].NSS)
 			{
 			//Hardware master output disabled : Input floating
 			case SPI_NSS_HW_Master_SS_output_Disable:
@@ -302,7 +302,7 @@ void MCAL_SPI_GPIO_Set_Pins(SPI_TypeDef* SPIx)
 		else
 		{
 			//NSS  : PB12
-			switch(Global_SPI_Config[SPI2_INDEX]->NSS)
+			switch(Global_SPI_Config[SPI2_INDEX].NSS)
 			{
 			//Hardware slave : Input floating
 			case SPI_NSS_HW_Slave:
@@ -386,7 +386,7 @@ void SPI1_IRQHandler(void)
 	irq_src.RXNE = ( (SPI1->SR & (1<<0) ) >> 0);
 	irq_src.ERRI = ( (SPI1->SR & (1<<4) ) >> 4);
 
-	Global_SPI_Config[SPI1_INDEX]->P_IRQ_CallBack(irq_src);
+	Global_SPI_Config[SPI1_INDEX].P_IRQ_CallBack(irq_src);
 }
 
 void SPI2_IRQHandler(void)
@@ -396,5 +396,5 @@ void SPI2_IRQHandler(void)
 	irq_src.RXNE = ( (SPI2->SR & (1<<0) ) >> 0);
 	irq_src.ERRI = ( (SPI2->SR & (1<<4) ) >> 4);
 
-	Global_SPI_Config[SPI2_INDEX]->P_IRQ_CallBack(irq_src);
+	Global_SPI_Config[SPI2_INDEX].P_IRQ_CallBack(irq_src);
 }
