@@ -43,3 +43,12 @@
 #define ADTS0			5
 
 
+#define ADC_SCALE_MASK			0xF8
+
+#define ADC_VREF_MASK			0x3F
+/* ADC voltage reference Macros */
+#define Vref_turned_off			0
+#define AVCC_REF_VOLT			1
+#define _2and_Half_V_REF_VOLT	3
+
+
