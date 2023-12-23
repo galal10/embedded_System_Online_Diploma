@@ -44,3 +44,6 @@ u16 MADC_u16_StartConversion(u8 Copy_u8_Channel)
 	ADMUX &= ADC_CHANNEL_MASK;
 	ADMUX |= Copy_u8_Channel;
 
+	/* Enable Start Conversion */
+	SET_BIT(ADCSRA, ADSC);
+
