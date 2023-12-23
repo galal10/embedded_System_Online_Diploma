@@ -14,3 +14,7 @@
 void MADC_Vid_Init(void)
 {
 	/* Cleared voltage reference bits */
+	ADMUX &= ADC_VREF_MASK;
+	/* Select V-Ref */
+	ADMUX |= ADC_REF_VOLT << REFS0;
+
