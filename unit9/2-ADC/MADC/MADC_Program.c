@@ -22,3 +22,14 @@ void MADC_Vid_Init(void)
 	ADCSRA &= ADC_SCALE_MASK;
 	ADCSRA |= ADC_PRESCALER;
 
+	/* Select Left or Right Adjust */
+#if ADC_ADJUST == ADC_LEFT_ADJSUT
+	SET_BIT(ADMUX, ADLAR);
+
+#elif ADC_ADJUST == ADC_RIGHT_ADJSUT
+	CLR_BIT(ADMUX, ADLAR);
+
+#else
+	#error "ADC adjust options is not valid"
+
+#endif
