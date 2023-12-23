@@ -37,3 +37,7 @@ void MADC_Vid_Init(void)
 	/* Enable ADC */
 	SET_BIT(ADCSRA, ADEN);
 }
+/* ADC Start Conversion ==> Polling, Return ADC value */
+u16 MADC_u16_StartConversion(u8 Copy_u8_Channel)
+{
+	/* Select Channel */
