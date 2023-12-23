@@ -52,3 +52,13 @@
 #define _2and_Half_V_REF_VOLT	3
 
 
+/* ADC PreScaler Macros */
+#define ADC_2_PRESCALER			1
+#define ADC_4_PRESCALER			2
+#define ADC_8_PRESCALER			3
+#define ADC_16_PRESCALER		4
+#define ADC_32_PRESCALER		5
+#define ADC_64_PRESCALER		6
+#define ADC_128_PRESCALER		7
+
+
