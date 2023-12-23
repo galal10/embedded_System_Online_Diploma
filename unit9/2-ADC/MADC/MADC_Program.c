@@ -47,3 +47,6 @@ u16 MADC_u16_StartConversion(u8 Copy_u8_Channel)
 	/* Enable Start Conversion */
 	SET_BIT(ADCSRA, ADSC);
 
+	/* Wait until ADIF is set */
+	while(GET_BIT(ADCSRA, ADIF) == 0);
+
