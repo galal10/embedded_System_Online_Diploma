@@ -62,3 +62,11 @@
 #define ADC_128_PRESCALER		7
 
 
+/* ADC Adjust Macros */
+#define ADC_LEFT_ADJSUT			1
+#define ADC_RIGHT_ADJSUT		2
+
+
+#define ADC_CHANNEL_MASK		0xE0
+
+#endif /* MADC_PRIVATE_H_ */
