@@ -41,3 +41,6 @@ void MADC_Vid_Init(void)
 u16 MADC_u16_StartConversion(u8 Copy_u8_Channel)
 {
 	/* Select Channel */
+	ADMUX &= ADC_CHANNEL_MASK;
+	ADMUX |= Copy_u8_Channel;
+
