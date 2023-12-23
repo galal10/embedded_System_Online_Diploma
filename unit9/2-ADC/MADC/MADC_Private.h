@@ -32,3 +32,6 @@
 #define ADPS1 			1
 #define ADPS0			0
 
+/* The ADC Data Register */
+#define ADCD			*((volatile u16*)0x24)
+
