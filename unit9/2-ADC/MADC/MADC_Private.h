@@ -35,3 +35,11 @@
 /* The ADC Data Register */
 #define ADCD			*((volatile u16*)0x24)
 
+/* Special FunctionIO Register */
+#define SFIOR			*((volatile u8*)0x50)
+/* SFIOR Bits */
+#define ADTS2 			7
+#define ADTS1 			6
+#define ADTS0			5
+
+
