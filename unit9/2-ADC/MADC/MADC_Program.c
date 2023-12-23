@@ -18,3 +18,7 @@ void MADC_Vid_Init(void)
 	/* Select V-Ref */
 	ADMUX |= ADC_REF_VOLT << REFS0;
 
+	/* Set PreScaler */
+	ADCSRA &= ADC_SCALE_MASK;
+	ADCSRA |= ADC_PRESCALER;
+
