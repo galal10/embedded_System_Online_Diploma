@@ -50,3 +50,6 @@ u16 MADC_u16_StartConversion(u8 Copy_u8_Channel)
 	/* Wait until ADIF is set */
 	while(GET_BIT(ADCSRA, ADIF) == 0);
 
+	/* Read the Register value */
+	return ADCD;
+}
