@@ -33,3 +33,7 @@ void MADC_Vid_Init(void)
 	#error "ADC adjust options is not valid"
 
 #endif
+
+	/* Enable ADC */
+	SET_BIT(ADCSRA, ADEN);
+}
