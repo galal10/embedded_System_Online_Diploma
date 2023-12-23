@@ -9,3 +9,10 @@
  */
 #define ADC_PRESCALER		ADC_64_PRESCALER
 
+/* ADC Adjust Options:
+ * 1- ADC_LEFT_ADJSUT
+ * 2- ADC_RIGHT_ADJSUT
+ */
+#define ADC_ADJUST			ADC_RIGHT_ADJSUT
+
+#endif /* MADC_CONFIG_H_ */
