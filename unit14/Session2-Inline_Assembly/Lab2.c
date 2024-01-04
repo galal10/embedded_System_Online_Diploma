@@ -51,6 +51,7 @@ void EXTI9_CallBack(void)
 	IRQ_flag = 1;
 }
 
+int Val1 = 0;
 
 int main(void)
 {
@@ -67,6 +68,10 @@ int main(void)
 
 	/* no operation : that means CPU take one instruction doing nothing */
 	__asm("nop \n\t nop \n\t nop");
+
+	/* move Val1, 0xff "move 0xff in Val1" "%0 means the 1st argument it'll meet" */
+	__asm("mov %0, #0xFF"
+			: "=r" (Val1) ); /* 1st column describes output parameters */
 
 	__asm("nop \n\t nop \n\t nop");
 
