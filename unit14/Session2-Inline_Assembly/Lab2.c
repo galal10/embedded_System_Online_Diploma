@@ -65,6 +65,10 @@ int main(void)
 
 	IRQ_flag = 1;
 
+	/* no operation : that means CPU take one instruction doing nothing */
+	__asm("nop \n\t nop \n\t nop");
+
+	__asm("nop \n\t nop \n\t nop");
 
 	while(1)
 	{
