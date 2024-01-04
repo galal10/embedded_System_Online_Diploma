@@ -46,10 +46,14 @@ void my_delay(uint32_t time)
 	}
 }
 
+int INT_VAL;
 
 void EXTI9_CallBack(void)
 {
 	__asm("nop \n\t nop");
+
+	__asm("MRS %[out], IPSR"
+			: [out] "=r" (INT_VAL));
 
 	__asm("nop \n\t nop");
 
