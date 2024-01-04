@@ -73,6 +73,7 @@ int main(void)
 	__asm("mov %0, #0xFF"
 			: "=r" (Val1) ); /* 1st column describes output parameters */
 
+
 	__asm("nop \n\t nop \n\t nop");
 
 	while(1)
