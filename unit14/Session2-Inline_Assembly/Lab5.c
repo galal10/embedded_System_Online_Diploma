@@ -69,6 +69,12 @@ int main(void)
 	/* no operation : that means CPU take one instruction doing nothing */
 	__asm("nop \n\t nop \n\t nop");
 
+	/* add Val3, Val1, Val2 */
+	__asm("add %[out0], %[in0], %[in1]"
+			: [out0] "=r" (Val3) /* 1st column describes output parameters */
+			: [in0] "r" (Val1), /* 2nd column describes input parameters */
+			  [in1] "r" (Val2)
+			: "r0");			/* 3rd column describes Reserving registers */
 
 	__asm("nop \n\t nop \n\t nop");
 
