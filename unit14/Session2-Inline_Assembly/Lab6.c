@@ -56,6 +56,7 @@ void EXTI9_CallBack(void)
 	IRQ_flag = 1;
 }
 
+int Val;
 
 int main(void)
 {
@@ -74,6 +75,9 @@ int main(void)
 	__asm("nop \n\t nop \n\t nop");
 
 	/* MRS CONTROL, Val */
+	__asm("MRS %[out], CONTROL"
+			: [out] "=r" (Val)); /* 1st column describes output parameters */
+
 	__asm("nop \n\t nop \n\t nop");
 
 	while(1)
